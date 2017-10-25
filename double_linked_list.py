@@ -4,10 +4,11 @@
 class Node(object):
     """Creates a node object"""
 
-    def __init__(self, data, next):
+    def __init__(self, data, previous):
         """Constructor for the Node object."""
         self.data = data
         self.next = next
+        self.previous = previous
 
 
 class LinkedList(object):
