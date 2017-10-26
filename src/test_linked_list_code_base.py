@@ -97,12 +97,12 @@ def test_linked_list_size_returns_list_length2(n):
     assert l.size() == n
 
 
-# def test_linked_list_search__empty_returns_none():
-#     """."""
-#     from linked_list_code_base import LinkedList
-#     l = LinkedList()
-#     l.push(1)
-#     assert l.search(1) is 1
+def test_linked_list_search__empty_returns_none():
+    """."""
+    from linked_list_code_base import LinkedList
+    l = LinkedList()
+    l.push(1)
+    assert l.search(1).data is 1
 
 
 def test_linked_list_search__with_one_returns_node():
@@ -139,6 +139,14 @@ def test_linked_list_ca_take_iterable():
     a_list = [4, 3, 2, 6, 4, 9, 8]
     l = LinkedList(a_list)
     for item in a_list:
-        pass
-        # assert l.search(item).data == item
+        #pass
+        assert l.search(item).data == item
 
+def test_remove_removes_number_from_list():
+    """."""
+    from linked_list_code_base import LinkedList
+    a_list = [4, 3, 2, 6, 4, 9, 8]
+    l = LinkedList(a_list)
+    l.remove(6)
+    assert len(l) == 6
+    assert l.search(6) == None

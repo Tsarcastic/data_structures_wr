@@ -4,10 +4,10 @@
 class Node(object):
     """Creates a node object"""
 
-    def __init__(self, data, next):
+    def __init__(self, data, next_node):
         """Constructor for the Node object."""
         self.data = data
-        self.next = next
+        self.next = next_node
 
 
 class LinkedList(object):
@@ -47,13 +47,24 @@ class LinkedList(object):
     def search(self, val):
         """Searches for a given node value and returns it"""
         curr = self.head
-        while curr.data == val:
-            return curr
-        curr = curr.next
+        if not curr:
+            return "The list is empty."
+        while curr:
+            if curr.data  == val:
+                return curr
+            curr = curr.next
+        return 
 
-    def remove(self):
+    def remove(self, val):
         """Searches for a given node value and remove it from the linked list"""
-        pass
+        #search for val.  remove node returned by search func.
+        curr = self.head
+        while curr:
+            if curr.next.data == val:
+                curr.next = curr.next.next
+                self._counter -= 1 
+                return      
+            curr = curr.next
 
     def display(self):
         """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”"""
