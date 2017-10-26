@@ -142,6 +142,7 @@ def test_linked_list_ca_take_iterable():
         #pass
         assert l.search(item).data == item
 
+
 def test_remove_removes_number_from_list():
     """."""
     from linked_list_code_base import LinkedList
@@ -150,3 +151,19 @@ def test_remove_removes_number_from_list():
     l.remove(6)
     assert len(l) == 6
     assert l.search(6) == None
+
+
+def test_display_a_list():
+    """."""
+    from linked_list_code_base import LinkedList
+    a_list = [4, 3, 2, 6, 4, 9, 8]
+    l = LinkedList(a_list)
+    assert l.display() == "(8, 9, 4, 6, 2, 3, 4)"
+
+
+def test_print_the_list():
+    """."""
+    from linked_list_code_base import LinkedList
+    a_list = [4, 3, 2, 6, 4, 9, 8]
+    l = LinkedList(a_list)
+    assert l.print() == "(8, 9, 4, 6, 2, 3, 4)"
