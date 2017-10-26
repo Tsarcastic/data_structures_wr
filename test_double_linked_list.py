@@ -27,7 +27,7 @@ def test_node_exists_in_continuum03():
     dll = DoubleLinkedList()
     dll.push('banana')
     dll.push('orange')
-    assert dll.head.next.next == None
+    assert dll.head.next.next is None
 
 def test_pop_off_01():
     from double_linked_list import Node, DoubleLinkedList
@@ -74,3 +74,48 @@ def test_shift_on_empty_list_raises_exception():
     dll = DoubleLinkedList()
     with pytest.raises(IndexError): 
         dll.shift()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def test_remove01():
+    from double_linked_list import Node, DoubleLinkedList
+    dll = DoubleLinkedList()
+    dll.push('z')
+    dll.push('x')
+    dll.push('y')
+    dll.remove('x')
+    assert dll.head.next.data == 'z'
+
+def test_remove02():
+    from double_linked_list import Node, DoubleLinkedList
+    dll = DoubleLinkedList()
+    dll.push('x')
+    dll.push('z')
+    dll.push('x')
+    dll.push('y')
+    dll.remove('x')
+    assert dll.tail.data == 'x'
+>>>>>>> fd79e3696bda286f3f22fb8df31cd7a2ff7d6e00

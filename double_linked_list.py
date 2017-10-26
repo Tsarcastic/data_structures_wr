@@ -66,8 +66,16 @@ class DoubleLinkedList(object):
             return curr
         curr = curr.next
 
-    def remove(self):
+    def remove(self,val):
         """Searches for a given node value and remove it from the linked list"""
+        curr = self.head
+        while curr:
+            if curr.next.data == val:
+                curr.next = curr.next.next
+                curr.next.previous = curr
+                self._counter -= 1
+                return
+            curr = curr.next
         pass
 
     def display(self):
