@@ -44,3 +44,48 @@ def test_pop_off_02():
     dll.push('orange')
     dll.pop()
     assert not dll.head.previous
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def test_remove01():
+    from double_linked_list import Node, DoubleLinkedList
+    dll = DoubleLinkedList()
+    dll.push('z')
+    dll.push('x')
+    dll.push('y')
+    dll.remove('x')
+    assert dll.head.next.data == 'z'
+
+def test_remove02():
+    from double_linked_list import Node, DoubleLinkedList
+    dll = DoubleLinkedList()
+    dll.push('x')
+    dll.push('z')
+    dll.push('x')
+    dll.push('y')
+    dll.remove('x')
+    assert dll.tail.data == 'x'
