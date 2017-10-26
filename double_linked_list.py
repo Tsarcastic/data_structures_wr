@@ -4,7 +4,7 @@
 class Node(object):
     """Creates a node object"""
 
-    def __init__(self, data, previous):
+    def __init__(self, data, previous="None"):
         """Constructor for the Node object."""
         self.data = data
         self.next = next
@@ -14,18 +14,21 @@ class Node(object):
 class LinkedList(object):
     """Class for containing object called LinkedList"""
 
-    def __init__(self, iterable=()):
+    def __init__(self):
         """Constructor for the Linked List object."""
         self.head = None
+        self.tail = None
         self._counter = 0
-        if isinstance(iterable, (str, tuple, list)):
-            for item in iterable:
-                self.push(item)
 
     def push(self, val):
         """Add a new value to the head of the linked list."""
         new_head = Node(val, self.head)
-        self.head = new_head
+        if self.counter == 0:
+            self.tail = new_head
+            self.head = new_head 
+        else:
+            self.head.previous = new_head
+            self.head = new_head
         self._counter += 1
 
     def pop(self):
