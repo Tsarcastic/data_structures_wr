@@ -40,6 +40,16 @@ class LinkedList(object):
         self._counter -= 1
         return output
 
+    def shift(self):
+        if not self.tail:
+            raise IndexError("The list is empty, so there's nothing to pop.")
+        else:
+            temp = self.tail.data
+            self.tail = self.tail.previous
+            self.tail.next = None
+        self._counter -= 1
+        return temp
+
     def size(self):
         """Return the size of our list."""
         return self._counter
