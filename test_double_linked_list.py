@@ -44,3 +44,33 @@ def test_pop_off_02():
     dll.push('orange')
     dll.pop()
     assert not dll.head.previous
+
+def test_shift_from_tail_changes_length():
+    from double_linked_list import Node, DoubleLinkedList
+    dll = DoubleLinkedList()
+    dll.push('banana')
+    dll.push('orange')
+    dll.shift()
+    assert len(dll) == 1
+
+def test_shift_from_tail_removes_last():
+    from double_linked_list import Node, DoubleLinkedList
+    dll = DoubleLinkedList()
+    dll.push('banana')
+    dll.push('orange')
+    dll.shift()
+    assert dll.tail.data == "orange"
+
+def test_shift_from_tail_one_item_head_is_tail():
+    from double_linked_list import Node, DoubleLinkedList
+    dll = DoubleLinkedList()
+    dll.push('banana')
+    dll.push('orange')
+    dll.shift()
+    assert dll.tail == dll.head
+
+def test_shift_on_empty_list_raises_exception():
+    from double_linked_list import Node, DoubleLinkedList
+    dll = DoubleLinkedList()
+    with pytest.raises(IndexError): 
+        dll.shift()
