@@ -4,14 +4,14 @@
 class Node(object):
     """Creates a node object"""
 
-    def __init__(self, data, previous="None"):
+    def __init__(self, data, next, previous="None"):
         """Constructor for the Node object."""
         self.data = data
         self.next = next
         self.previous = previous
 
 
-class LinkedList(object):
+class DoubleLinkedList(object):
     """Class for containing object called LinkedList"""
 
     def __init__(self):
@@ -23,7 +23,7 @@ class LinkedList(object):
     def push(self, val):
         """Add a new value to the head of the linked list."""
         new_head = Node(val, self.head)
-        if self.counter == 0:
+        if self.head == None:
             self.tail = new_head
             self.head = new_head 
         else:
@@ -36,6 +36,7 @@ class LinkedList(object):
         if not self.head:
             raise IndexError("The list is empty, so there's nothing to pop.")
         output = self.head.data
+        self.head.next.previous = None
         self.head = self.head.next
         self._counter -= 1
         return output
