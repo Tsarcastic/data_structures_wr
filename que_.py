@@ -2,39 +2,50 @@
 
 
 class Node(object):
-        """A Node which contains a value."""
+    """A Node which contains a value."""
 
-  
     def __init__(self, data, next):
-        """Creates a new Node."""
+        """Create a new Node."""
         self.data = data
-        self.next = next 
+        self.next = next
         self.previous = None
 
-class Queue(object):
 
+class Queue(object):
+    """A Line of Nodes."""
 
     def __init__(self):
+        """Create an empty queue."""
         self.head = None
         self.tail = None
         self._counter = 0
 
-
     def enqueue(self, val):
-        new_head = Node(val, self.head)
+        """Add a node to the tail of the queue."""
+        new_tail = Node(val, self.tail)
         if self.head is None:
-            self.tail = new_head
-            self.head = new_head
-        else:
-            
-            self.head = new_head
+            self.head = new_tail
+        self.tail = new_tail
         self._counter += 1
 
+    def dequeue(self):
+        """Remove a node from the head of the queue."""
+        if not self.head:
+            raise IndexError("There is nothing to dequeue.")
+        output = self.head.data
+        self.head.next.previous = None
+        self.head = self.head.next
+        self._counter -= 1
+        return output
 
-    def dequeue():
-        if not self.tail:
-            raise IndexError("The queue is currently empty.")
-        else:
-            temp = self.tail.data
+    def peek(self):
+        """Access the value of the head of the queue."""
+        return self.head.data
 
+    def size(self):
+        """Return the size of the queue."""
+        return self.counter
 
+    def __len__(self):
+        """Work with len() function to find length of linked list."""
+        return self._counter

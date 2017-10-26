@@ -1,0 +1,59 @@
+"""Test for the queue."""
+
+
+import pytest
+
+
+def test_node_has_attributes():
+    """Test for Node."""
+    from linked_list_code_base import Node
+    n = Node(1, None)
+    assert hasattr(n, 'data')
+    assert hasattr(n, 'data')
+
+
+def test_empty_queue_does_not_have_head():
+    """."""
+    from que_ import Queue
+    q = Queue()
+    assert q.head is None
+
+
+def test_empty_queue_does_not_have_tail():
+    """."""
+    from que_ import Queue
+    q = Queue()
+    assert q.tail is None
+
+
+def test_enque_creates_head():
+    """."""
+    from que_ import Queue
+    q = Queue()
+    q.enqueue('x')
+    assert q.head.data is 'x'
+
+
+def test_enque_creates_tail():
+    """."""
+    from que_ import Queue
+    q = Queue()
+    q.enqueue('x')
+    assert q.tail.data is 'x'
+
+
+def test_two_items_in_line_correct_head():
+    from que_ import Queue
+    q = Queue()
+    q.enqueue('x')
+    q.enqueue('y')
+    assert q.head.data is 'x'
+
+def test_two_items_in_line_correct_head():
+    from que_ import Queue
+    q = Queue()
+    q.enqueue('x')
+    q.enqueue('y')
+    assert q.tail.data is 'y'
+
+
