@@ -2,7 +2,7 @@
 
 
 class Node(object):
-    """Creates a node object"""
+    """Creates a node object."""
 
     def __init__(self, data, next, previous="None"):
         """Constructor for the Node object."""
@@ -12,7 +12,7 @@ class Node(object):
 
 
 class DoubleLinkedList(object):
-    """Class for containing object called LinkedList"""
+    """Class for containing object called LinkedList."""
 
     def __init__(self):
         """Constructor for the Linked List object."""
@@ -23,12 +23,20 @@ class DoubleLinkedList(object):
     def push(self, val):
         """Add a new value to the head of the linked list."""
         new_head = Node(val, self.head)
-        if self.head == None:
+        if self.head is None:
             self.tail = new_head
-            self.head = new_head 
+            self.head = new_head
         else:
             self.head.previous = new_head
             self.head = new_head
+        self._counter += 1
+
+    def append(self, val):
+        """Add a node to the end of the list."""
+        new_tail = Node(val, self.tail)
+        if self.head is None:
+            self.head = new_tail
+        self.tail = new_tail
         self._counter += 1
 
     def pop(self):
@@ -42,6 +50,7 @@ class DoubleLinkedList(object):
         return output
 
     def shift(self):
+        """Remove last node from list."""
         if not self.tail:
             raise IndexError("The list is empty, so there's nothing to pop.")
         else:
@@ -56,18 +65,18 @@ class DoubleLinkedList(object):
         return self._counter
 
     def __len__(self):
-        """Works with len() function to find length of linked list"""
+        """Work with len() function to find length of linked list."""
         return self._counter
 
     def search(self, val):
-        """Searches for a given node value and returns it"""
+        """Searche for a given node value and returns it."""
         curr = self.head
         while curr.data == val:
             return curr
         curr = curr.next
 
-    def remove(self,val):
-        """Searches for a given node value and remove it from the linked list"""
+    def remove(self, val):
+        """Search for a given node value and remove it from the linked list."""
         curr = self.head
         while curr:
             if curr.next.data == val:
@@ -79,7 +88,9 @@ class DoubleLinkedList(object):
         pass
 
     def display(self):
-        """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”"""
+        u"""Will return a unicode string representing the list as if it were.
 
-#make sure print(linked_list) will run the display method       
+        a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”.
+        """
         pass
+# make sure print(linked_list) will run the display method
