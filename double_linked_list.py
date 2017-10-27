@@ -91,9 +91,12 @@ class DoubleLinkedList(object):
         pass
 
     def display(self):
-        u"""Will return a unicode string representing the list as if it were.
-
-        a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”.
-        """
-        pass
-# make sure print(linked_list) will run the display method
+        """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”"""
+        curr = self.head
+        the_thing = "("
+        while curr:
+            the_thing += str(curr.data) + ", "
+            curr = curr.next
+        the_thing = the_thing[:-2]
+        the_thing += ")"
+        return the_thing
