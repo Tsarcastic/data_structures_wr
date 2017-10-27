@@ -4,10 +4,10 @@
 class Node(object):
     """Creates a node object."""
 
-    def __init__(self, data, next, previous="None"):
+    def __init__(self, data, next_n, previous="None"):
         """Constructor for the Node object."""
         self.data = data
-        self.next = next
+        self.next_n = next_n
         self.previous = previous
 
 
@@ -38,7 +38,7 @@ class DoubleLinkedList(object):
             self.head = new_tail
             self.tail = new_tail
         else:
-            self.tail.next = new_tail
+            self.tail.next_n = new_tail
             self.tail = new_tail
         self._counter += 1
 
@@ -47,8 +47,8 @@ class DoubleLinkedList(object):
         if not self.head:
             raise IndexError("The list is empty, so there's nothing to pop.")
         output = self.head.data
-        self.head.next.previous = None
-        self.head = self.head.next
+        self.head.next_n.previous = None
+        self.head = self.head.next_n
         self._counter -= 1
         return output
 
@@ -59,7 +59,7 @@ class DoubleLinkedList(object):
         else:
             temp = self.tail.data
             self.tail = self.tail.previous
-            self.tail.next = None
+            self.tail.next_n = None
         self._counter -= 1
         return temp
 
@@ -76,18 +76,18 @@ class DoubleLinkedList(object):
         curr = self.head
         while curr.data == val:
             return curr
-        curr = curr.next
+        curr = curr.next_n
 
     def remove(self, val):
         """Search for a given node value and remove it from the linked list."""
         curr = self.head
         while curr:
-            if curr.next.data == val:
-                curr.next = curr.next.next
-                curr.next.previous = curr
+            if curr.next_n.data == val:
+                curr.next_n = curr.next_n.next_n
+                curr.next_n.previous = curr
                 self._counter -= 1
                 return
-            curr = curr.next
+            curr = curr.next_n
         pass
 
     def display(self):
@@ -96,7 +96,7 @@ class DoubleLinkedList(object):
         the_thing = "("
         while curr:
             the_thing += str(curr.data) + ", "
-            curr = curr.next
+            curr = curr.next_n
         the_thing = the_thing[:-2]
         the_thing += ")"
         return the_thing
@@ -104,3 +104,4 @@ class DoubleLinkedList(object):
     def __repr__(self):
         """Ensure the print function will run the display"""
         return self.display()
+     
