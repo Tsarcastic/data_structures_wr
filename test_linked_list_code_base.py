@@ -1,4 +1,4 @@
-"""test for Singly linked list."""
+"""test for Singly Linked List."""
 
 
 import pytest
@@ -42,7 +42,7 @@ def test_linked_list_push_moves_old_head_to_new_heads_next():
     l = LinkedList()
     l.push('val')
     l.push('val2')
-    assert l.head.next.data == 'val'
+    assert l.head.next_node.data == 'val'
 
 
 def test_linked_list_pop_removes_head_and_returns_value():
@@ -121,25 +121,12 @@ def test_linked_list_search__with_one_bad_search():
     assert l.search(0) is None
 
 
-# @pytest.mark.parametrize('n', range(1, 10))
-# def test_linked_list_search__with_one_bad_search2(n):
-#     """."""
-#     from linked_list_code_base import LinkedList
-#     from random import randint
-#     l = LinkedList()
-#     for i in range(1, n + 1):
-#         l.push(i)
-#     search_me = randint(1, n)
-#     assert l.search(search_me).data == search_me
-
-
 def test_linked_list_ca_take_iterable():
     """."""
     from linked_list_code_base import LinkedList
     a_list = [4, 3, 2, 6, 4, 9, 8]
     l = LinkedList(a_list)
     for item in a_list:
-        #pass
         assert l.search(item).data == item
 
 
@@ -150,7 +137,7 @@ def test_remove_removes_number_from_list():
     l = LinkedList(a_list)
     l.remove(6)
     assert len(l) == 6
-    assert l.search(6) == None
+    assert l.search(6) is None
 
 
 def test_display_a_list():
@@ -159,11 +146,3 @@ def test_display_a_list():
     a_list = [4, 3, 2, 6, 4, 9, 8]
     l = LinkedList(a_list)
     assert l.display() == "(8, 9, 4, 6, 2, 3, 4)"
-
-
-def test_print_the_list():
-    """."""
-    from linked_list_code_base import LinkedList
-    a_list = [4, 3, 2, 6, 4, 9, 8]
-    l = LinkedList(a_list)
-    assert l.print() == "(8, 9, 4, 6, 2, 3, 4)"
