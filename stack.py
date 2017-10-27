@@ -12,6 +12,11 @@ class Node(object):
 
 class Stack(object):
     """Create a stack where things can be stacked on and taken off."""
+  
+    def __init__(self):
+        """Constructor for the Stack object."""
+        self.head = None
+        self._counter = 0
 
     def push(self, val):
         """Add a new value to the head of the linked list."""
@@ -27,3 +32,7 @@ class Stack(object):
         self.head = self.head.next
         self._counter -= 1
         return output
+
+    def __len__(self):
+        """Work with len() function to find # of items in the stack."""
+        return self._counter
