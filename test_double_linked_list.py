@@ -125,7 +125,6 @@ def test_append_changes_tail_when_list_has_multiple_nodes():
 
 
 
-
 def test_remove01():
     from double_linked_list import Node, DoubleLinkedList
     dll = DoubleLinkedList()

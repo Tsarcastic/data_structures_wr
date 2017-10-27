@@ -32,11 +32,14 @@ class DoubleLinkedList(object):
         self._counter += 1
 
     def append(self, val):
-        """Add a node to the end of the list."""
-        new_tail = Node(val, self.tail)
-        if self.head is None:
+        """Add a node to the tail of the queue."""
+        new_tail = Node(val, None, self.tail)
+        if self.tail is None:
             self.head = new_tail
-        self.tail = new_tail
+            self.tail = new_tail
+        else:
+            self.tail.next = new_tail
+            self.tail = new_tail
         self._counter += 1
 
     def pop(self):
