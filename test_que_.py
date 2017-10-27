@@ -67,3 +67,26 @@ def test_dequeue_error_message():
     q.enqueue('z')
     q.dequeue()
     assert q.head.data == 'y'
+
+def test_len_works_properly():
+    """If two items queue up and one dequeues the second is the new head""" 
+    from que_ import Queue
+    q = Queue()
+    q.enqueue('x')
+    q.enqueue('y')
+    assert len(q) == 2
+
+def peek_works():
+    q = Queue()
+    q.enqueue('x')
+    q.enqueue('y')
+    assert peek(q) == 'x'
+
+
+def test_size_works_properly():
+    """If two items queue up and one dequeues the second is the new head""" 
+    from que_ import Queue
+    q = Queue()
+    q.enqueue('x')
+    q.enqueue('y')
+    assert q.size() == 2

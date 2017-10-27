@@ -29,6 +29,7 @@ class Queue(object):
         else:
             self.tail.next = new_tail
             self.tail = new_tail
+        self._counter += 1
 
 
     def dequeue(self):
@@ -47,17 +48,8 @@ class Queue(object):
 
     def size(self):
         """Return the size of the queue."""
-        return self.counter
+        return self._counter
 
     def __len__(self):
         """Work with len() function to find length of linked list."""
         return self._counter
-
-q = Queue()
-q.enqueue('x')
-q.enqueue('y')
-q.enqueue('z')
-print(q.head.data)
-print(q.tail.data)
-print(q.head.next.data)
-print(q.head.next.previous.data)
