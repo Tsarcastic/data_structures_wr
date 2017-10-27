@@ -32,11 +32,14 @@ class DoubleLinkedList(object):
         self._counter += 1
 
     def append(self, val):
-        """Add a node to the end of the list."""
-        new_tail = Node(val, self.tail)
-        if self.head is None:
+        """Add a node to the tail of the queue."""
+        new_tail = Node(val, None, self.tail)
+        if self.tail is None:
             self.head = new_tail
-        self.tail = new_tail
+            self.tail = new_tail
+        else:
+            self.tail.next = new_tail
+            self.tail = new_tail
         self._counter += 1
 
     def pop(self):
@@ -88,9 +91,16 @@ class DoubleLinkedList(object):
         pass
 
     def display(self):
-        u"""Will return a unicode string representing the list as if it were.
+        """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”"""
+        curr = self.head
+        the_thing = "("
+        while curr:
+            the_thing += str(curr.data) + ", "
+            curr = curr.next
+        the_thing = the_thing[:-2]
+        the_thing += ")"
+        return the_thing
 
-        a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”.
-        """
-        pass
-# make sure print(linked_list) will run the display method
+    def __repr__(self):
+        """Ensure the print function will run the display"""
+        return self.display()
