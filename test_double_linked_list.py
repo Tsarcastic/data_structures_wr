@@ -141,3 +141,12 @@ def test_remove02():
     dll.remove('x')
     assert dll.tail.data == 'x'
 
+def test_display():
+    """Will return the correct string representing double linked list."""
+    from double_linked_list import Node, DoubleLinkedList
+    dll = DoubleLinkedList()
+    dll.push('x')
+    dll.push('z')
+    dll.push('x')
+    dll.push('y')
+    assert dll.display() == "(y, x, z, x)"
