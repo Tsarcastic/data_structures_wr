@@ -150,3 +150,4 @@ def test_display():
     dll.push('x')
     dll.push('y')
     assert dll.display() == "(y, x, z, x)"
+

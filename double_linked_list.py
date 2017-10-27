@@ -100,3 +100,7 @@ class DoubleLinkedList(object):
         the_thing = the_thing[:-2]
         the_thing += ")"
         return the_thing
+
+    def __repr__(self):
+        """Ensure the print function will run the display"""
+        return self.display()
