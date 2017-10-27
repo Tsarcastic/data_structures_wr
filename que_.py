@@ -4,11 +4,11 @@
 class Node(object):
     """A Node which contains a value."""
 
-    def __init__(self, data, next):
+    def __init__(self, data, previous):
         """Create a new Node."""
         self.data = data
-        self.next = next
-        self.previous = None
+        self.previous = previous
+        self.next = None
 
 
 class Queue(object):
@@ -23,10 +23,13 @@ class Queue(object):
     def enqueue(self, val):
         """Add a node to the tail of the queue."""
         new_tail = Node(val, self.tail)
-        if self.head is None:
+        if self.tail is None:
             self.head = new_tail
-        self.tail = new_tail
-        self._counter += 1
+            self.tail = new_tail
+        else:
+            self.tail.next = new_tail
+            self.tail = new_tail
+
 
     def dequeue(self):
         """Remove a node from the head of the queue."""
@@ -49,3 +52,12 @@ class Queue(object):
     def __len__(self):
         """Work with len() function to find length of linked list."""
         return self._counter
+
+q = Queue()
+q.enqueue('x')
+q.enqueue('y')
+q.enqueue('z')
+print(q.head.data)
+print(q.tail.data)
+print(q.head.next.data)
+print(q.head.next.previous.data)

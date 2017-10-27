@@ -43,6 +43,7 @@ def test_enque_creates_tail():
 
 
 def test_two_items_in_line_correct_head():
+    """If two items queue up the head is the first."""
     from que_ import Queue
     q = Queue()
     q.enqueue('x')
@@ -50,10 +51,19 @@ def test_two_items_in_line_correct_head():
     assert q.head.data is 'x'
 
 def test_two_items_in_line_correct_head():
+    """If two items queue up the tail is the second one."""
     from que_ import Queue
     q = Queue()
     q.enqueue('x')
     q.enqueue('y')
     assert q.tail.data is 'y'
 
-
+def test_dequeue_error_message():
+    """If two items queue up and one dequeues the second is the new head""" 
+    from que_ import Queue
+    q = Queue()
+    q.enqueue('x')
+    q.enqueue('y')
+    q.enqueue('z')
+    q.dequeue()
+    assert q.head.data == 'y'
