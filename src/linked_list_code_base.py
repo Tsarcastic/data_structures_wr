@@ -2,7 +2,7 @@
 
 
 class Node(object):
-    """Creates a node object"""
+    """Creates a node object."""
 
     def __init__(self, data, next_node):
         """Constructor for the Node object."""
@@ -11,7 +11,7 @@ class Node(object):
 
 
 class LinkedList(object):
-    """Class for containing object called LinkedList"""
+    """Class for containing object called LinkedList."""
 
     def __init__(self, iterable=()):
         """Constructor for the Linked List object."""
@@ -41,33 +41,42 @@ class LinkedList(object):
         return self._counter
 
     def __len__(self):
-        """Works with len() function to find length of linked list"""
+        """Work with len() function to find length of linked list."""
         return self._counter
 
     def search(self, val):
-        """Searches for a given node value and returns it"""
+        """Search for a given node value and returns it."""
         curr = self.head
         if not curr:
             return "The list is empty."
         while curr:
-            if curr.data  == val:
+            if curr.data == val:
                 return curr
             curr = curr.next
-        return 
+        return
 
     def remove(self, val):
-        """Searches for a given node value and remove it from the linked list"""
-        #search for val.  remove node returned by search func.
+        """Search for a given value and remove it from the linked list."""
+        # search for val.  remove node returned by search func.
         curr = self.head
         while curr:
             if curr.next.data == val:
                 curr.next = curr.next.next
-                self._counter -= 1 
-                return      
+                self._counter -= 1
+                return
             curr = curr.next
 
     def display(self):
         """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”"""
+        curr = self.head
+        the_thing = "("
+        while curr:
+            the_thing += str(curr.data) + ", "
+            curr = curr.next
+        the_thing = the_thing[:-2]
+        the_thing += ")"
+        return the_thing
 
-#make sure print(linked_list) will run the display method       
-        pass
+
+    def __repr__(self):
+        return self.display()
