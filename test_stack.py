@@ -27,3 +27,13 @@ def test_len_function_returns_counter():
     s.push('potato')
     s.push("beans")
     assert len(s) == 2
+
+
+def test_next_will_be_correct():
+    """Next will update."""
+    from stack import Stack
+    s = Stack()
+    s.push('potato')
+    s.push("beans")
+    s.push("yams")
+    assert s.head.next_node.data == 'beans'

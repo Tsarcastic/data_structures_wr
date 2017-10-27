@@ -7,12 +7,12 @@ class Node(object):
     def __init__(self, data, next_node):
         """Constructor for the Node object."""
         self.data = data
-        self.next = next_node
+        self.next_node = next_node
 
 
 class Stack(object):
     """Create a stack where things can be stacked on and taken off."""
-  
+
     def __init__(self):
         """Constructor for the Stack object."""
         self.head = None
@@ -29,7 +29,7 @@ class Stack(object):
         if not self.head:
             raise IndexError("The list is empty, so there's nothing to pop.")
         output = self.head.data
-        self.head = self.head.next
+        self.head = self.head.next_node
         self._counter -= 1
         return output
 
