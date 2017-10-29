@@ -37,9 +37,12 @@ class Queue(object):
         if not self.head:
             raise IndexError("There is nothing to dequeue.")
         output = self.head.data
-        self.head.next_node.previous = None
-        self.head = self.head.next_node
-        self._counter -= 1
+        if self.head.next_node:
+            self.head.next_node.previous = None
+            self.head = self.head.next_node
+            self._counter -= 1
+        else:
+            self.head.next_node.previous = None
         return output
 
     def peek(self):
