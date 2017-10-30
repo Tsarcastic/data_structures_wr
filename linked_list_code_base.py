@@ -2,16 +2,16 @@
 
 
 class Node(object):
-    """Creates a node object"""
+    """Creates a node object."""
 
-    def __init__(self, data, next):
+    def __init__(self, data, next_node):
         """Constructor for the Node object."""
         self.data = data
-        self.next = next
+        self.next_node = next_node
 
 
 class LinkedList(object):
-    """Class for containing object called LinkedList"""
+    """Class for containing object called LinkedList."""
 
     def __init__(self, iterable=()):
         """Constructor for the Linked List object."""
@@ -32,7 +32,7 @@ class LinkedList(object):
         if not self.head:
             raise IndexError("The list is empty, so there's nothing to pop.")
         output = self.head.data
-        self.head = self.head.next
+        self.head = self.head.next_node
         self._counter -= 1
         return output
 
@@ -41,22 +41,42 @@ class LinkedList(object):
         return self._counter
 
     def __len__(self):
-        """Works with len() function to find length of linked list"""
+        """Work with len() function to find length of linked list."""
         return self._counter
 
     def search(self, val):
-        """Searches for a given node value and returns it"""
+        """Search for a given node value and returns it."""
         curr = self.head
-        while curr.data == val:
-            return curr
-        curr = curr.next
+        if not curr:
+            return "The list is empty."
+        while curr:
+            if curr.data == val:
+                return curr
+            curr = curr.next_node
+        return
 
-    def remove(self):
-        """Searches for a given node value and remove it from the linked list"""
-        pass
+    def remove(self, val):
+        """Search for a given value and remove it from the linked list."""
+        # search for val.  remove node returned by search func.
+        curr = self.head
+        while curr:
+            if curr.next_node.data == val:
+                curr.next_node = curr.next_node.next_node
+                self._counter -= 1
+                return
+            curr = curr.next_node
 
     def display(self):
         """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”"""
+        curr = self.head
+        the_thing = "("
+        while curr:
+            the_thing += str(curr.data) + ", "
+            curr = curr.next_node
+        the_thing = the_thing[:-2]
+        the_thing += ")"
+        return the_thing
 
-#make sure print(linked_list) will run the display method       
-        pass
+
+    def __repr__(self):
+        return self.display()
