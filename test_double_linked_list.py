@@ -9,7 +9,11 @@ def test_node_exists_in_continuum01():
     dll = DoubleLinkedList()
     dll.push('banana')
     dll.push('orange')
+<<<<<<< HEAD
     assert dll.head.next.previous.data == 'orange'
+=======
+    assert dll.head.next_n.previous.data == 'orange'
+>>>>>>> 9c30e3643d04c58640bf1bfc57399115ef739245
 
 
 def test_node_exists_in_continuum02():
@@ -18,7 +22,11 @@ def test_node_exists_in_continuum02():
     dll = DoubleLinkedList()
     dll.push('banana')
     dll.push('orange')
+<<<<<<< HEAD
     assert dll.head.next.data == 'banana'
+=======
+    assert dll.head.next_n.data == 'banana'
+>>>>>>> 9c30e3643d04c58640bf1bfc57399115ef739245
 
 
 def test_node_exists_in_continuum03():
@@ -27,7 +35,11 @@ def test_node_exists_in_continuum03():
     dll = DoubleLinkedList()
     dll.push('banana')
     dll.push('orange')
+<<<<<<< HEAD
     assert dll.head.next.next is None
+=======
+    assert dll.head.next_n.next_n is None
+>>>>>>> 9c30e3643d04c58640bf1bfc57399115ef739245
 
 
 def test_pop_off_01():
@@ -112,13 +124,24 @@ def test_append_changes_tail_when_list_has_multiple_nodes():
     dll.append("red")
     assert dll.tail.data != "blue"
 
+<<<<<<< HEAD
 def test_append_retains_correct_next_for_nodes():
     """A node's 'next' is retained properly through appending."""
+=======
+
+def test_append_retains_correct_next_n_for_nodes():
+    """A node's 'next_n' is retained properly through appending."""
+>>>>>>> 9c30e3643d04c58640bf1bfc57399115ef739245
     from double_linked_list import Node, DoubleLinkedList
     dll = DoubleLinkedList()
     dll.append("blue")
     dll.append("red")
+<<<<<<< HEAD
     assert dll.head.next.data == "red"
+=======
+    assert dll.head.next_n.data == "red"
+
+>>>>>>> 9c30e3643d04c58640bf1bfc57399115ef739245
 
 def test_remove01():
     """Removing an item maintains list."""
@@ -128,7 +151,12 @@ def test_remove01():
     dll.push('x')
     dll.push('y')
     dll.remove('x')
+<<<<<<< HEAD
     assert dll.head.next.data == 'z'
+=======
+    assert dll.head.next_n.data == 'z'
+
+>>>>>>> 9c30e3643d04c58640bf1bfc57399115ef739245
 
 def test_remove02():
     """The tail is correctly updated when the previous tail is removed."""
@@ -141,3 +169,16 @@ def test_remove02():
     dll.remove('x')
     assert dll.tail.data == 'x'
 
+<<<<<<< HEAD
+=======
+
+def test_display():
+    """Will return the correct string representing double linked list."""
+    from double_linked_list import Node, DoubleLinkedList
+    dll = DoubleLinkedList()
+    dll.push('x')
+    dll.push('z')
+    dll.push('x')
+    dll.push('y')
+    assert dll.display() == "(y, x, z, x)"
+>>>>>>> 9c30e3643d04c58640bf1bfc57399115ef739245
