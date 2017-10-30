@@ -5,153 +5,181 @@ import pytest
 
 def test_node_exists_in_continuum01():
     """Test for previous."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('banana')
-    dll.push('orange')
-    assert dll.head.next_node.previous.data == 'orange'
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append_left('banana')
+    dq.append_left('orange')
+    assert dq.head.next_node.previous.data == 'orange'
 
 
 def test_node_exists_in_continuum02():
     """Test for previous."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('banana')
-    dll.push('orange')
-    assert dll.head.next_node.data == 'banana'
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append_left('banana')
+    dq.append_left('orange')
+    assert dq.head.next_node.data == 'banana'
 
 
 def test_node_exists_in_continuum03():
     """Test for previous."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('banana')
-    dll.push('orange')
-    assert dll.head.next_node.next_node is None
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append_left('banana')
+    dq.append_left('orange')
+    assert dq.head.next_node.next_node is None
 
 
-def test_pop_off_01():
+def test_pop_left_off_01():
     """Pop one off and return correct value."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('banana')
-    dll.push('orange')
-    dll.pop()
-    assert dll.head.data == 'banana'
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append_left('banana')
+    dq.append_left('orange')
+    dq.popleft()
+    assert dq.head.data == 'banana'
 
 
 def test_pop_off_02():
     """Pop one off and return correct value."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('banana')
-    dll.push('orange')
-    dll.pop()
-    assert not dll.head.previous
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append_left('banana')
+    dq.append_left('orange')
+    dq.popleft()
+    assert not dq.head.previous
 
 
 def test_shift_from_tail_changes_length():
-    """Can push 2 remove 1 and length is 1."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('banana')
-    dll.push('orange')
-    dll.shift()
-    assert len(dll) == 1
+    """Can append_left 2 remove 1 and length is 1."""
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append_left('banana')
+    dq.append_left('orange')
+    dq.pop()
+    assert len(dq) == 1
 
 
-def test_shift_from_tail_removes_last():
-    """Push 2 in, shift one and data is correct."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('banana')
-    dll.push('orange')
-    dll.shift()
-    assert dll.tail.data == "orange"
+def test_pop_from_tail_removes_last():
+    """append_left 2 in, pop one and data is correct."""
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append_left('banana')
+    dq.append_left('orange')
+    dq.pop()
+    assert dq.tail.data == "orange"
 
 
-def test_shift_from_tail_one_item_head_is_tail():
+def test_pop_from_tail_one_item_head_is_tail():
     """Tail is correct."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('banana')
-    dll.push('orange')
-    dll.shift()
-    assert dll.tail == dll.head
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append_left('banana')
+    dq.append_left('orange')
+    dq.pop()
+    assert dq.tail == dq.head
 
 
-def test_shift_on_empty_list_raises_exception():
-    """Shift on empty list raises exception."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
+def test_pop_on_empty_deque_raises_exception():
+    """Shift on empty deque raises exception."""
+    from deque import Node, Deque
+    dq = Deque()
     with pytest.raises(IndexError):
-        dll.shift()
+        dq.pop()
 
 
-def test_append_on_empty_list_makes_head_and_tail_same():
-    """Appending an item to an empty list makes that item head and tail."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.append("blue")
-    assert dll.head == dll.tail
+def test_popleft_on_empty_deque_raises_exception():
+    """Shift on empty deque raises exception."""
+    from deque import Node, Deque
+    dq = Deque()
+    with pytest.raises(IndexError):
+        dq.popleft()
 
+
+def test_append_on_deque_makes_head_and_tail_same():
+    """Appending an item to an empty deque makes that item head and tail."""
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append("blue")
+    assert dq.head == dq.tail
+
+
+def test_append_left_on_deque_makes_head_and_tail_same():
+    """Appending an item to an empty deque makes that item head and tail."""
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append_left("blue")
+    assert dq.head == dq.tail
 
 def test_append_increments_counter():
     """Size goes up correctly."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.append("blue")
-    assert dll.size() == 1
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append("blue")
+    assert dq.size() == 1
 
 
-def test_append_changes_tail_when_list_has_multiple_nodes():
+def test_pop_left_decreases_counter():
+    """Size goes down correctly."""
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append("blue")
+    dq.popleft()
+    assert dq.size() == 0
+
+
+def test_pop_decreases_counter():
+    """Size goes down correctly."""
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append("blue")
+    dq.pop()
+    assert dq.size() == 0
+
+def test_append_left_increments_counter():
+    """Size goes up correctly."""
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append_left("blue")
+    assert dq.size() == 1
+
+
+def test_append_changes_tail_when_deque_has_multiple_nodes():
     """Tail shifts correctly when appended."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.append("blue")
-    dll.append("red")
-    assert dll.tail.data != "blue"
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append("blue")
+    dq.append("red")
+    assert dq.tail.data != "blue"
 
 
 def test_append_retains_correct_next_node_for_nodes():
     """A node's 'next_node' is retained properly through appending."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.append("blue")
-    dll.append("red")
-    assert dll.head.next_node.data == "red"
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append("blue")
+    dq.append("red")
+    assert dq.head.next_node.data == "red"
+
+def test_deque_head_equals_tail():
+    """An empty node's head and tail are equal."""
+    from deque import Node, Deque    
+    dq = Deque()
+    assert dq.head == dq.tail
 
 
-def test_remove01():
-    """Removing an item maintains list."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('z')
-    dll.push('x')
-    dll.push('y')
-    dll.remove('x')
-    assert dll.head.next_node.data == 'z'
+def test_peek_returns_value_of_tail():
+    """Peeking will return the value of the tail."""
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append("blue")
+    dq.append("red")
+    assert dq.peek() ==  'red'
 
-
-def test_remove02():
-    """The tail is correctly updated when the previous tail is removed."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('x')
-    dll.push('z')
-    dll.push('x')
-    dll.push('y')
-    dll.remove('x')
-    assert dll.tail.data == 'x'
-
-
-def test_display():
-    """Will return the correct string representing double linked list."""
-    from double_linked_list import Node, DoubleLinkedList
-    dll = DoubleLinkedList()
-    dll.push('x')
-    dll.push('z')
-    dll.push('x')
-    dll.push('y')
-    assert dll.display() == "(y, x, z, x)"
-
+def test_peek_left_returns_value_of_head():
+    """Peeking will return the value of the tail."""
+    from deque import Node, Deque
+    dq = Deque()
+    dq.append("blue")
+    dq.append("red")
+    assert dq.peekleft() == 'blue'

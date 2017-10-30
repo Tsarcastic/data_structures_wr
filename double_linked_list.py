@@ -57,6 +57,9 @@ class DoubleLinkedList(object):
         """Remove last node from list."""
         if not self.tail:
             raise IndexError("The list is empty, so there's nothing to pop.")
+        elif self.head == self.tail:
+            self.tail = None
+            self.head = None
         else:
             temp = self.tail.data
             self.tail = self.tail.previous
@@ -84,12 +87,12 @@ class DoubleLinkedList(object):
         """Search for a given node value and remove it from the linked list."""
         curr = self.head
         while curr:
-            if curr.next.data == val:
-                curr.next = curr.next.next
-                curr.next.previous = curr
+            if curr.next_node.data == val:
+                curr.next_node = curr.next_node.next_node
+                curr.next_node.previous = curr
                 self._counter -= 1
                 return
-            curr = curr.next
+            curr = curr.next_node
 
     def display(self):
         """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)"""
