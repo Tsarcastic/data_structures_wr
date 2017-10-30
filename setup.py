@@ -11,11 +11,7 @@ setup(
     author_email=["robert.j.bronson@gmail.com",
                   "brendanmd@gmail.com"],
     license="MIT",
-    py_modules=["linked_list",
-                "double_linked_list.py",
-                "queue",
-                "stack",
-                "deque"],
+    py_modules=["deque"],
     package_dir={'': 'src'},
     install_requires=[],
     extras_require={
