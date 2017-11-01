@@ -1,13 +1,17 @@
 """Make a minimum binheap."""
 
 
-class BinHeap(object):
+class Binheap(object):
     """Initialize a new instance of a bin heap."""
 
     def __init__(self):
         """Instantiate a new bin heap."""
         self.bin_list = [0]
         self.heap_index = 0
+
+    def display(self):
+        """Print the contents of the heap."""
+        print(self.bin_list[1:])
 
     def push(self, data):
         """Push a new item to the end of the list."""
@@ -17,9 +21,12 @@ class BinHeap(object):
 
     def sort(self, index):
         """Sort from the bottom of the list up."""
-        while (index // 2) > 0:
-            if self.bin_list[index] < self.bin_list[index // 2]:
-                temp = self.bin_list[index // 2]
-                self.bin_list[index // 2] = self.bin_list[index]
-                self.bin_list[index] = temp
-                index = index // 2
+        range = self.heap_index
+        while range > 0:
+            if (index // 2) > 0:
+                if self.bin_list[index] < self.bin_list[index // 2]:
+                    temp = self.bin_list[index // 2]
+                    self.bin_list[index // 2] = self.bin_list[index]
+                    self.bin_list[index] = temp
+                    index = index // 2
+            range -= 1
