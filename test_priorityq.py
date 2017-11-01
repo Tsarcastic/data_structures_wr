@@ -106,7 +106,8 @@ def test_next_is_correct():
     q.insert('y')
     assert q.size() == 2
 
-def priority_remove_works():
+
+def priority_remove_works01():
     """If two items queue up and one dequeues the second is the new head."""
     from priority_queue import Priority_Q
     q = Priority_Q()
@@ -114,21 +115,22 @@ def priority_remove_works():
     q.insert('y', None, 1)
     assert q.pop() == 'x'
 
-def priority_remove_works():
+
+def priority_remove_works02():
     """If two items queue up and one dequeues the second is the new head."""
     from priority_queue import Priority_Q
     q = Priority_Q()
-    q.insert('z', None, 0)    
+    q.insert('z', None, 0)
     q.insert('x', None, 0)
     q.insert('y', None, 1)
     assert q.pop() == 'z'
 
-def priority_remove_works():
+
+def priority_remove_works03():
     """If two items queue up and one dequeues the second is the new head."""
     from priority_queue import Priority_Q
     q = Priority_Q()
-    q.insert('z', None, 2)    
+    q.insert('z', None, 2)
     q.insert('x', None, 2)
     q.insert('y', None, 0)
     assert q.pop() == 'y'
-

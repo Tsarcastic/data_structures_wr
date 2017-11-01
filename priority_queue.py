@@ -9,6 +9,7 @@ class Node(object):
         self.data = data
         self.previous = previous
         self.next_node = None
+        self.priority = priority
 
 
 class Priority_Q(object):
@@ -42,7 +43,7 @@ class Priority_Q(object):
             if curr.priority < output.priority:
                 output = curr
             curr = curr.next_node
-        if output.next_node:
+        if output.next_node and output.previous:
             output.next_node.previous = output.previous
             output.previous.next_node = output.next_node
             self.counter -= 1
