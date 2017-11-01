@@ -134,3 +134,15 @@ def priority_remove_works03():
     q.insert('x', None, 2)
     q.insert('y', None, 0)
     assert q.pop() == 'y'
+
+
+def removing_priority_items_will_properly_change_tail():
+    """Removing the tail correctly reassigns the new tail."""
+    from priority_queue import Priority_Q
+    q = Priority_Q()
+    q.insert('z', None, 2)
+    q.insert('x', None, 2)
+    q.insert('y', None, 3)
+    q.insert('w', None, 0)
+    q.pop()
+    assert q.tail.data == 'y'

@@ -21,7 +21,7 @@ class Priority_Q(object):
         self.tail = None
         self._counter = 0
 
-    def insert(self, val, priority):
+    def insert(self, val, priority=99):
         """Add a node to the tail of the queue."""
         new_tail = Node(val, self.tail, priority)
         if self.tail is None:
