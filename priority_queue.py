@@ -5,7 +5,7 @@ class Node(object):
     """A Node which contains a value."""
 
     def __init__(self, data, previous, priority=99):
-        """Create a new Node."""
+        """Create a new Node. Lower priority is better."""
         self.data = data
         self.previous = previous
         self.next_node = None
@@ -21,9 +21,9 @@ class Priority_Q(object):
         self.tail = None
         self._counter = 0
 
-    def insert(self, val):
+    def insert(self, val, priority):
         """Add a node to the tail of the queue."""
-        new_tail = Node(val, self.tail)
+        new_tail = Node(val, self.tail, priority)
         if self.tail is None:
             self.head = new_tail
             self.tail = new_tail
@@ -31,7 +31,6 @@ class Priority_Q(object):
             self.tail.next_node = new_tail
             self.tail = new_tail
         self._counter += 1
-
 
     def pop(self):
         """Remove a node from the head of the queue."""
@@ -46,15 +45,15 @@ class Priority_Q(object):
         if output.next_node and output.previous:
             output.next_node.previous = output.previous
             output.previous.next_node = output.next_node
-            self.counter -= 1
-        elif self.counter is 1:
+            self._counter -= 1
+        elif self._counter is 1:
             self.head = None
             self.tail = None
             self._counter -= 1
         else:
             self.tail = self.tail.previous
             self.tail.next = None
-            self.counter -= 1
+            self._counter -= 1
         return output.data
 
     def peek(self):

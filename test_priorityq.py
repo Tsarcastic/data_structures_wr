@@ -13,21 +13,21 @@ def test_node_has_attributes():
 
 
 def test_empty_queue_does_not_have_head():
-    """."""
+    """An empty queue does not have a head."""
     from priority_queue import Priority_Q
     q = Priority_Q()
     assert q.head is None
 
 
 def test_empty_queue_does_not_have_tail():
-    """."""
+    """An empty queue does not have a tail."""
     from priority_queue import Priority_Q
     q = Priority_Q()
     assert q.tail is None
 
 
 def test_insert_creates_head():
-    """."""
+    """Inserting a node will create a head."""
     from priority_queue import Priority_Q
     q = Priority_Q()
     q.insert('x')
@@ -35,7 +35,7 @@ def test_insert_creates_head():
 
 
 def test_insert_creates_tail():
-    """."""
+    """Inserting a node will create a tail."""
     from priority_queue import Priority_Q
     q = Priority_Q()
     q.insert('x')
@@ -61,14 +61,14 @@ def test_two_items_in_line_correct_tail():
 
 
 def test_popping_leaves_correct_head():
-    """If two items queue up and one dequeues the second is the new head."""
+    """If three items are in a pq and one popped the second is the new head."""
     from priority_queue import Priority_Q
     q = Priority_Q()
     q.insert('x')
     q.insert('y')
     q.insert('z')
     q.pop()
-    assert q.head.data == 'y'
+    assert q.head.data == 'x'
 
 
 def test_len_works_properly():
@@ -90,7 +90,7 @@ def peek_works():
 
 
 def test_size_works_properly():
-    """If two items queue up and one dequeues the second is the new head."""
+    """If two items are in a list the size is 2."""
     from priority_queue import Priority_Q
     q = Priority_Q()
     q.insert('x')
@@ -99,16 +99,16 @@ def test_size_works_properly():
 
 
 def test_next_is_correct():
-    """If two items queue up and one dequeues the second is the new head."""
+    """If two items are in a queue the one next to the head is the tail."""
     from priority_queue import Priority_Q
     q = Priority_Q()
     q.insert('x')
     q.insert('y')
-    assert q.size() == 2
+    assert q.head.next_node == q.tail
 
 
-def priority_remove_works01():
-    """If two items queue up and one dequeues the second is the new head."""
+def remove_works01():
+    """The head will be removed from a queue."""
     from priority_queue import Priority_Q
     q = Priority_Q()
     q.insert('x', None, 0)
@@ -117,17 +117,17 @@ def priority_remove_works01():
 
 
 def priority_remove_works02():
-    """If two items queue up and one dequeues the second is the new head."""
+    """Item with best priority will be removed regardless of position."""
     from priority_queue import Priority_Q
     q = Priority_Q()
-    q.insert('z', None, 0)
+    q.insert('z', None, 1)
     q.insert('x', None, 0)
     q.insert('y', None, 1)
-    assert q.pop() == 'z'
+    assert q.pop() == 'x'
 
 
 def priority_remove_works03():
-    """If two items queue up and one dequeues the second is the new head."""
+    """The item with the lowest priority will be removed."""
     from priority_queue import Priority_Q
     q = Priority_Q()
     q.insert('z', None, 2)
