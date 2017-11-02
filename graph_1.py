@@ -67,3 +67,7 @@ class DirectionalGraph(object):
 
     def adjacent(self, val1, val2):
         """Return true if an edge connects "val1" and "val2"."""
+        if (val1, val2) in self.edges or (val2, val1) in self.edges:
+            return True
+        else:
+            return False
