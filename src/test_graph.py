@@ -7,6 +7,7 @@ def basic_setup():
     graph = DirectionalGraph()
     return graph
 
+
 @pytest.fixture
 def populated_graph():
     from graph_1 import DirectionalGraph
@@ -16,6 +17,7 @@ def populated_graph():
     graph.add_node(3)
     graph.add_node(4)
     return graph
+
 
 @pytest.fixture
 def populated_edges_graph():
@@ -68,3 +70,6 @@ def test_removing_edge_only_removes_given_edge_from_dict(populated_edges_graph):
 def test_del_node_removes_edges_common_to_node(populated_edges_graph):
     populated_edges_graph.del_node(1)
     assert len(populated_edges_graph.edges) == 1
+
+#def test_neighbors_works_as_intended(populated_edges_graph):
+    #assert populated_edges_graph.neighbors(1) == [2, 4]

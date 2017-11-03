@@ -35,11 +35,13 @@ class DirectionalGraph(object):
 
     def del_node(self, val):
         """Del Node containing "val" from graph."""
+        temp_edges = {}
         if val in self.node_list:
             self.node_list.remove(val)
             for key in self.edges.keys():
-                if val in key:
-                    del self.edges[key]
+                if val not in key:
+                    temp_edges[key] = self.edges[key]
+            self.edges = temp_edges
         else:
             raise IndexError("Node not in graph.")
 

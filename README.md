@@ -114,3 +114,23 @@ Time Complexity for size is O(1), since the value is tracked as an attribute, al
 
 ### __len__
 The *__len__* method allows us to use the standard len() method and we re-map it to return the value returned by the size() method.
+
+
+-------------------
+### Deque
+-------------------
+
+
+
+-------------------
+### Bin Heap
+-------------------
+
+
+
+-------------------
+### Priority Queue
+-------------------
+
+
+-------------------
