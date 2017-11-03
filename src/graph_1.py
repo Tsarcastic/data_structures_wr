@@ -1,12 +1,4 @@
-"""."""
-
-
-# class GraphNode(object):
-#     """Create a graph node object."""
-
-#     def __init__(self, value):
-#         """."""
-#         self.value = value
+"""Creates a graph."""
 
 
 class DirectionalGraph(object):
@@ -64,8 +56,11 @@ class DirectionalGraph(object):
         temp_list = []
         for key in self.edges.keys():
             if val in key:
-                temp_list.append(val)
-        return temp_list
+                if val == key[0]:
+                    temp_list.append(key[1])
+                else:
+                    temp_list.append(key[0])
+        return list(set(temp_list))
 
     def adjacent(self, val1, val2):
         """Return true if an edge connects "val1" and "val2"."""
