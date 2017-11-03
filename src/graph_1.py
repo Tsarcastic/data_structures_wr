@@ -1,12 +1,12 @@
 """."""
 
 
-class GraphNode(object):
-    """Create a graph node object."""
+# class GraphNode(object):
+#     """Create a graph node object."""
 
-    def __init__(self, value):
-        """."""
-        self.value = value
+#     def __init__(self, value):
+#         """."""
+#         self.value = value
 
 
 class DirectionalGraph(object):
@@ -27,11 +27,11 @@ class DirectionalGraph(object):
 
     def add_node(self, val):
         """Add a node to the graph."""
-        self.node_list.append(GraphNode(val))
+        self.node_list.append(val)
 
-    def add_edge(self, val1, val2):
+    def add_edge(self, val1, val2, wt=0):
         """Add new edge to graph connecting nodes "val1" and "val2"."""
-        self.edges[(val1, val2)] = 0
+        self.edges[(val1, val2)] = wt
 
     def del_node(self, val):
         """Del Node containing "val" from graph."""
