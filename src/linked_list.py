@@ -7,7 +7,7 @@ class Node(object):
     def __init__(self, data, next_node):
         """Constructor for the Node object."""
         self.data = data
-        self.next_node = next_node
+        self.next = next_node
 
 
 class LinkedList(object):
@@ -17,7 +17,7 @@ class LinkedList(object):
         """Constructor for the Linked List object."""
         self.head = None
         self._counter = 0
-        if isinstance(iterable, (str, tuple, list)):
+        if hasattr(iterable, '__iter__') or isinstance(iterable, str):
             for item in iterable:
                 self.push(item)
 
@@ -32,7 +32,7 @@ class LinkedList(object):
         if not self.head:
             raise IndexError("The list is empty, so there's nothing to pop.")
         output = self.head.data
-        self.head = self.head.next_node
+        self.head = self.head.next
         self._counter -= 1
         return output
 
@@ -48,35 +48,42 @@ class LinkedList(object):
         """Search for a given node value and returns it."""
         curr = self.head
         if not curr:
-            return "The list is empty."
+            return
         while curr:
             if curr.data == val:
                 return curr
-            curr = curr.next_node
+            curr = curr.next
         return
 
     def remove(self, val):
         """Search for a given value and remove it from the linked list."""
-        # search for val.  remove node returned by search func.
         curr = self.head
         while curr:
-            if curr.next_node.data == val:
-                curr.next_node = curr.next_node.next_node
+            if curr.next == val:
+                curr.next = curr.next.next
                 self._counter -= 1
                 return
-            curr = curr.next_node
+            curr = curr.next
 
     def display(self):
-        """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”"""
-        curr = self.head
-        the_thing = "("
-        while curr:
-            the_thing += str(curr.data) + ", "
-            curr = curr.next_node
-        the_thing = the_thing[:-2]
-        the_thing += ")"
-        return the_thing
+        """Will return a string representing the list.
 
+        as if it were a Python tuple literal: "(12, ‘sam’, 37, ‘tango’)"
+        """
+        if self.head is None:
+            return
+        curr = self.head
+        output = "("
+        while curr:
+            if isinstance(curr.data, (int, float)):
+                output += "{}, ".format(str(curr.data))
+            else:
+                output += "'{}', ".format(str(curr.data))
+            curr = curr.next
+        output = output[:-2]
+        output += ")"
+        return output
 
     def __repr__(self):
+        """Print the list to the screen using built in print()."""
         return self.display()
