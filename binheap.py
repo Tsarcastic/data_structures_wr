@@ -30,3 +30,20 @@ class Binheap(object):
                     self.bin_list[index] = temp
                     index = index // 2
             range -= 1
+
+    def sort_down(self):
+        """."""
+        index = 1
+        while self.bin_list[index * 2]:
+            if self.bin_list[index * 2] and self.bin_list[index * 2 + 1]:
+                if (self.bin_list[index * 2]) > (self.bin_list[index * 2 + 1]):
+                    child_idx = (index * 2) + 1
+                else:
+                    child_idx = index * 2
+            elif self.bin_list[index * 2]:
+                child_idx = index * 2
+            parent = self.bin_list[index]
+            if self.bin_list[index] > self.bin_list[child_idx]:
+                self.bin_list[index] = self.bin_list[child_idx]
+            self.bin_list[child_idx] = parent
+            index = child_idx
