@@ -4,10 +4,13 @@
 class Binheap(object):
     """Initialize a new instance of a bin heap."""
 
-    def __init__(self):
+    def __init__(self, iterable=()):
         """Instantiate a new bin heap."""
         self.bin_list = [0]
         self.heap_index = 0
+        if hasattr(iterable, '__iter__') or isinstance(iterable, str):
+            for item in iterable:
+                self.push(item)
 
     def display(self):
         """Print the contents of the heap."""
