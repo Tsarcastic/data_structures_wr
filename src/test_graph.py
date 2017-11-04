@@ -99,6 +99,10 @@ def test_del_node_removes_edges_common_to_node(populated_edges_graph):
     populated_edges_graph.del_node(1)
     assert len(populated_edges_graph.edges) == 1
 
+def test_del_node_retains_weight_of_remaining_keys(populated_edges_graph):
+    """Deleting a node will remove the edges it has."""
+    populated_edges_graph.del_node(1)
+    assert populated_edges_graph.edges[(3,2)] == 0
 
 def test_neighbors_works_as_intended(populated_edges_graph):
     """Neighbor will register."""
