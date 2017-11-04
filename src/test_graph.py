@@ -101,20 +101,31 @@ def test_del_node_removes_edges_common_to_node(populated_edges_graph):
 
 
 def test_neighbors_works_as_intended(populated_edges_graph):
+    """Neighbor will register."""
     assert populated_edges_graph.neighbors(1) == [2, 4]
 
 
-def adjacent_works(populated_edges_graph):
+def test_adjacent_works(populated_edges_graph):
     """Adjacent knows that an edge connects something."""
     assert populated_edges_graph.adjacent(1, 2)
 
 
-def has_node_registers_true(populated_graph):
+def test_adjacent_wont_return_false_positive(populated_edges_graph):
+    """Adjacent won't return a false positive."""
+    assert not populated_edges_graph.adjacent(3, 1)
+
+
+def test_has_node_registers_true(populated_graph):
     """Node registers true when it should."""
     assert populated_graph.has_node(1)
 
 
-def has_node_registers_false(populated_graph):
+def test_has_node_registers_false(populated_graph):
     """Will not return a false positive."""
     assert not populated_graph.has_node('spaghetti')
 
+
+def test_del_node_raises_index_error(populated_graph):
+    """Won't delete something that isn't there."""    
+    with pytest.raises(IndexError):
+        populated_graph.del_node('tortoise')
