@@ -114,3 +114,36 @@ Time Complexity for size is O(1), since the value is tracked as an attribute, al
 
 ### __len__
 The *__len__* method allows us to use the standard len() method and we re-map it to return the value returned by the size() method.
+
+-------------------
+## Deque
+-------------------
+The Deque structure is a list that can add or remove from either the head or the tail.
+
+### Append
+The *append(val)* method adds a new value to the end of the deque.
+The Time Complexity for this method is O(1). Time is constant because you do not have to iterate through the deque.
+
+### Appendleft
+The *appendleft(val)* method adds a new value to the end of the deque.
+The Time Complexity for this method is O(1). Time is constant because you do not have to iterate through the deque.
+
+### Pop
+The pop() method emoves a value from the end of the deque and returns it (raises an exception if the deque is empty)
+The Time Complexity for this method is O(1). Time is constant because you do not have to iterate through the deque.
+
+### Popleft
+The popleft method removes a value from the front of the deque and returns it (raises an exception if the deque is empty)
+The Time Complexity for this method is O(1). Time is constant because you do not have to iterate through the deque.
+
+###Peek
+The peek() method  returns the next value that would be returned by pop but leaves the value in the deque (returns None if the deque is empty)
+The Time Complexity for this method is O(1). Time is constant because you do not have to iterate through the deque.
+
+###Peekleft
+The peekleft() method returns the next value that would be returned by popleft but leaves the value in the deque (returns None if the deque is empty)
+The Time Complexity for this method is O(1). Time is constant because you do not have to iterate through the deque.
+
+###Size
+The size() method returns the count of items in the queue (returns 0 if the queue is empty)
+The Time Complexity for this method is O(1). Time is constant because you do not have to iterate through the deque.
