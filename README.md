@@ -134,3 +134,42 @@ The *__len__* method allows us to use the standard len() method and we re-map it
 
 
 -------------------
+
+### Graph
+The graph consists of a number of nodes and a list of the links between these nodes.
+
+##  Nodes
+The nodes() method returns a list of all the nodes in the graph.
+The time complexity is O(N) because the size directly affects the time.
+
+## Edges
+The edges() method returns a list of all the edges in the graph.
+The time complexity is O(N) because the size directly affects the time.
+
+## Add_node
+The add_node(val) method adds a node to the graph.
+The time complexity is O(1) because it does not iterate through the graph.
+
+## Add_edge
+The add_edge(val1, val2) method adds an edge between two nodes.
+The time complexity is O(1) because it does not iterate through the graph.
+
+## Del_node
+The del_node(val) method deletes a node containing a value from the graph.
+The time complexity is O(N) because it needs to iterate through the list of nodes.
+
+## Del_edge
+The del_edge(val1, val2) method deletes an edge between two nodes.
+The time complexity is O(N) because it needs to iterate through the list of edges.
+
+## Has_node
+The has_node(val) method checks if a node with that value exists in the graph.
+The time complexity is O(N) because it needs to iterate through the list of nodes.
+
+## Neighbors
+The neighbors(val) method returns a list of all the nodes connected to a specific node.
+The time complexity is O(N) because it needs to iterate through the dictionary of edges.
+
+## Adjacent
+The adjacent(val1, val2) method returns true if an edge exists between two nodes or false if it does not.
+The time complexity is O(N) because it needs to iterate through the dictionary of edges.
