@@ -1,4 +1,5 @@
-"""Singly linked list creation."""
+"""Double linked list creation."""
+
 
 
 class Node(object):
@@ -10,6 +11,7 @@ class Node(object):
         self.data = data
         self.next_node = next_node
         self.previous = previous
+
 
 
 class DoubleLinkedList(object):
@@ -82,7 +84,6 @@ class DoubleLinkedList(object):
             return curr
         curr = curr.next_node
 
-
     def remove(self, val):
         """Search for a given node value and remove it from the linked list."""
         curr = self.head
@@ -93,6 +94,7 @@ class DoubleLinkedList(object):
                 self._counter -= 1
                 return
             curr = curr.next_node
+
 
     def display(self):
         """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)"""
@@ -108,3 +110,4 @@ class DoubleLinkedList(object):
     def __repr__(self):
         """Ensure the print function will run the display"""
         return self.display()
+
