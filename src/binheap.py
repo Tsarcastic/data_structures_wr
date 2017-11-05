@@ -35,7 +35,7 @@ class Binheap(object):
             range -= 1
 
     def sort_down(self):
-        """."""
+        """Sort the list from the front down."""
         index = 1
         while self.bin_list[index * 2]:
             if self.bin_list[index * 2] and self.bin_list[index * 2 + 1]:
@@ -50,3 +50,12 @@ class Binheap(object):
                 self.bin_list[index] = self.bin_list[child_idx]
             self.bin_list[child_idx] = parent
             index = child_idx
+
+    def pop(self):
+        """Remove the lowest-valued node from heap."""
+        to_remove = self.bin_list[1]
+        self.bin_list[1] = self.bin_list[-1]
+        del self.bin_list[-1]
+        self.heap_index -= 1
+        self.sort_down()
+        return to_remove
