@@ -36,7 +36,13 @@ def test_pop_removes_value_from_heap(loaded_setup):
     assert value not in loaded_setup.bin_list
 
 
-# def test_children_are_less_than_parents():
-#     """."""
-#     assert child1 value < parent value
-#     assert child2 value < parent value
+def test_heap_pops_values_in_ascending_order(loaded_setup):
+    """."""
+    output = []
+    for number in range(1, loaded_setup.heap_index):
+        output.append(loaded_setup.pop())
+    assert output == [1, 3, 6, 9, 22, 53, 100]
+
+
+# def test_display_func_prints_heap(loaded_setup):
+#     assert loaded_setup.display

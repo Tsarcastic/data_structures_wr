@@ -37,14 +37,11 @@ class Binheap(object):
     def sort_down(self):
         """Sort the list from the front down."""
         index = 1
-        while self.bin_list[index * 2]:
-            if self.bin_list[index * 2] and self.bin_list[index * 2 + 1]:
+        while index * 2 <= self.heap_index:
+            child_idx = index * 2
+            if index * 2 <= self.heap_index and index * 2 + 1 <= self.heap_index:
                 if (self.bin_list[index * 2]) > (self.bin_list[index * 2 + 1]):
                     child_idx = (index * 2) + 1
-                else:
-                    child_idx = index * 2
-            elif self.bin_list[index * 2]:
-                child_idx = index * 2
             parent = self.bin_list[index]
             if self.bin_list[index] > self.bin_list[child_idx]:
                 self.bin_list[index] = self.bin_list[child_idx]
