@@ -1,17 +1,17 @@
-"""Setup file for http-server package."""
+"""Setup file for data-structures package."""
 
 
 from setuptools import setup
 
 
 setup(
-    name="linked_list",
-    description="Python linked list.",
-    author=["Michael Shinners", "Jacob Carstens", "Brendan Davis"],
-    author_email=["michaelshinners@gmail.com", "jr.carstens00@gmail.com",
+    name="data-structures",
+    description="Python data structures.",
+    author=["Robert Bronson", "Brendan Davis"],
+    author_email=["robert.j.bronson@gmail.com",
                   "brendanmd@gmail.com"],
     license="MIT",
-    py_modules=["client", "server"],
+    py_modules=["deque"],
     package_dir={'': 'src'},
     install_requires=[],
     extras_require={
