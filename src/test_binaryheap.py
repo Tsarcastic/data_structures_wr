@@ -39,7 +39,7 @@ def test_pop_removes_value_from_heap(loaded_setup):
 def test_heap_pops_values_in_ascending_order(loaded_setup):
     """."""
     output = []
-    for number in range(1, loaded_setup.heap_index):
+    for number in range(1, 8):
         output.append(loaded_setup.pop())
     assert output == [1, 3, 6, 9, 22, 53, 100]
 
