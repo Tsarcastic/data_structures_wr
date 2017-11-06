@@ -10,8 +10,6 @@ class Node(object):
         """Constructor for the Node object."""
         self.data = data
         self.next_node = next_node
-        self.previous = previous
-
 
 
 class DoubleLinkedList(object):
@@ -41,6 +39,7 @@ class DoubleLinkedList(object):
             self.head = new_tail
             self.tail = new_tail
         else:
+
             self.tail.next_node = new_tail
             self.tail = new_tail
         self._counter += 1
@@ -50,6 +49,7 @@ class DoubleLinkedList(object):
         if not self.head:
             raise IndexError("The list is empty, so there's nothing to pop.")
         output = self.head.data
+
         self.head.next_node.previous = None
         self.head = self.head.next_node
         self._counter -= 1
@@ -59,14 +59,11 @@ class DoubleLinkedList(object):
         """Remove last node from list."""
         if not self.tail:
             raise IndexError("The list is empty, so there's nothing to pop.")
-        elif self.head == self.tail:
-            self.tail = None
-            self.head = None
         else:
             temp = self.tail.data
             self.tail = self.tail.previous
             self.tail.next_node = None
-            self._counter -= 1
+        self._counter -= 1
         return temp
 
     def size(self):
@@ -87,17 +84,17 @@ class DoubleLinkedList(object):
     def remove(self, val):
         """Search for a given node value and remove it from the linked list."""
         curr = self.head
-        while curr:
+        while curr: 
             if curr.next_node.data == val:
                 curr.next_node = curr.next_node.next_node
                 curr.next_node.previous = curr
                 self._counter -= 1
                 return
             curr = curr.next_node
-
+        pass
 
     def display(self):
-        """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)"""
+        """Will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”"""
         curr = self.head
         the_thing = "("
         while curr:
@@ -110,4 +107,3 @@ class DoubleLinkedList(object):
     def __repr__(self):
         """Ensure the print function will run the display"""
         return self.display()
-
