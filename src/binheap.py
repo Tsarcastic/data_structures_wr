@@ -39,7 +39,7 @@ class Binheap(object):
         index = 1
         while index * 2 <= self.heap_index:
             child_idx = index * 2
-            if (index * 2) + 1 < self.heap_index:
+            if (index * 2) + 1 <= self.heap_index:
                 if (self.bin_list[index * 2]) > (self.bin_list[index * 2 + 1]):
                     child_idx = (index * 2) + 1
                 else:
@@ -51,8 +51,6 @@ class Binheap(object):
                 self.bin_list[index] = self.bin_list[child_idx]
                 self.bin_list[child_idx] = parent
             index = child_idx
-
-
 
     def pop(self):
         """Remove the lowest-valued node from heap."""
