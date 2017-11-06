@@ -11,7 +11,7 @@ setup(
     author_email=["robert.j.bronson@gmail.com",
                   "brendanmd@gmail.com"],
     license="MIT",
-    py_modules=["deque"],
+    py_modules=["linked_list", "binheap", "deque"],
     package_dir={'': 'src'},
     install_requires=[],
     extras_require={

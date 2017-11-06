@@ -115,11 +115,31 @@ Time Complexity for size is O(1), since the value is tracked as an attribute, al
 ### __len__
 The *__len__* method allows us to use the standard len() method and we re-map it to return the value returned by the size() method.
 
--------------------
-### Bin Heap
--------------------
 
+--------------------
+## Binheap
+--------------------
+The Binheap structure is a heap data structure that takes the form of a binary tree.
 
+### Display
+The *display method prints the contents of the heap.
+Time Complexity of this function is O(n).  This is because in the worst-case-scenario the function will run a number of times equal to the length of the heap, so the length of the heap is the deciding factor on how long this runs.
+
+### Push
+The *push(val)* method adds a new value to the end of the heap.
+The Time Complexity for this method is O(1). Time is constant because you do not have to iterate through the heap.
+
+### Pop
+The *pop() method removes the top value of the heap and maintains the structure of the heap.
+The Time Complexity for this method is O(Log N). This is because the size of the heap will modify the amount of time it takes but not in a 1 to 1 way. 
+
+### Sort
+The *sort() * method starts with the item at the end of the list and maintains the structure of the list when a new item is added.
+The Time Complexity for this method is O(Log N). This is because the size of the heap will modify the amount of time it takes but not in a 1 to 1 way. 
+
+###Sort_down
+The *sort() * method starts with the item at the end of the list and maintains the structure of the list when a new item is added.
+The Time Complexity for this method is O(Log N). This is because the size of the heap will modify the amount of time it takes but not in a 1 to 1 way. 
 
 -------------------
 ### Priority Queue
@@ -198,4 +218,5 @@ The Time Complexity for this method is O(1). Time is constant because you do not
 ###Size
 The size() method returns the count of items in the queue (returns 0 if the queue is empty)
 The Time Complexity for this method is O(1). Time is constant because you do not have to iterate through the deque.
+
 
