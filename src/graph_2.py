@@ -81,11 +81,12 @@ class DirectionalGraph(object):
         for item in self.node_list:
             visited[item] = False
         q.append(starting)
+        visited[starting] = True
         while len(q) > 0:
-            visited[q[0]] = True
             for edge in self.edges:
                 if (edge[0] == q[0]) and not (visited[edge[1]]):
                     q.append(edge[1])
+                    visited[edge[1]] = True
             answer.append(q[0])
             q = q[1:]
 

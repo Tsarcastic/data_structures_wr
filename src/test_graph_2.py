@@ -240,4 +240,4 @@ def test_breadth_first_traversal_with_nodes_have_multiple_edges(populated_graph_
     graph.add_edge('H', 'G')
     graph.add_edge('C', 'I')
     test = graph.breadth_first('A')
-    assert test == ['A', 'B', 'C', 'D', 'E', 'F', 'I', 'H', 'G']
+    assert test == ['A', 'B', 'C', 'D', 'E', 'F', 'I', 'G', 'H']
