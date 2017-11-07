@@ -82,7 +82,29 @@ class DirectionalGraph(object):
             visited[item] = False
         q.append(starting)
         while len(q) > 0:
+            visited[q[0]] = True
             for edge in self.edges:
                 if (edge[0] == q[0]) and not (visited[edge[1]]):
                     q.append(edge[1])
             answer.append(q[0])
+            q = q[1:]
+
+        return answer
+
+    def depth_first(self, starting):
+        """Traverse the graph depth-first."""
+        visited = {}
+        answer = []
+        q = []
+        for item in self.node_list:
+            visited[item] = False
+        q.append(starting)
+        while len(q) > 0:
+            temp = q[-1]
+            for edge in self.edges:
+                if (edge[0] == temp) and not (visited[edge[1]]):
+                    q.append(edge[1])
+            answer.append(temp)
+            visited[temp] = True
+            q.remove(temp)
+        return answer
