@@ -19,14 +19,13 @@ class DirectionalGraph(object):
 
     def add_node(self, val):
         """Add a node to the graph."""
-        self.node_list.append(val)
+        if val not in self.node_list:
+            self.node_list.append(val)
 
     def add_edge(self, val1, val2, wt=0):
         """Add new edge to graph connecting nodes "val1" and "val2"."""
-        if val1 not in self.node_list:
-            self.add_node(val1)
-        if val2 not in self.node_list:
-            self.add_node(val2)
+        self.add_node(val1)
+        self.add_node(val2)
         self.edges[(val1, val2)] = wt
 
     def del_node(self, val):

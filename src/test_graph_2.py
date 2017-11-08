@@ -5,7 +5,7 @@ import pytest
 @pytest.fixture
 def basic_setup():
     """A basic setup with an empty graph."""
-    from graph_1 import DirectionalGraph
+    from graph_2 import DirectionalGraph
     graph = DirectionalGraph()
     return graph
 
@@ -13,7 +13,7 @@ def basic_setup():
 @pytest.fixture
 def populated_graph():
     """A graph populated with nodes but no edges."""
-    from graph_1 import DirectionalGraph
+    from graph_2 import DirectionalGraph
     graph = DirectionalGraph()
     graph.add_node(1)
     graph.add_node(2)
@@ -61,7 +61,6 @@ def populated_graph_for_traversals():
     graph.add_edge('F', 'H')
     graph.add_edge('F', 'I')
     return graph
-
 
 
 def test_empty_graph_is_empty(basic_setup):
@@ -158,80 +157,95 @@ def test_has_node_registers_false(populated_graph):
 
 
 def test_del_node_raises_index_error(populated_graph):
-    """Won't delete something that isn't there."""    
+    """Won't delete something that isn't there."""
     with pytest.raises(IndexError):
         populated_graph.del_node('tortoise')
 
 
+def test_will_not_add_a_duplicate_node(populated_graph):
+    """You cannot add a duplicate node."""
+    populated_graph.add_node(2)
+    assert populated_graph.node_list == [1, 2, 3, 4]
+
+
 def test_adding_nodes_through_edges_works(basic_setup):
-    """."""
+    """Adding an edge will add its respectives nodes if they do not exist."""
     basic_setup.add_edge(1, 2)
-    basic_setup.add_node(1)
-    basic_setup.add_node(2)
     assert basic_setup.node_list == [1, 2]
 
+
 def test_depth_first_traversal_returns_list(populated_graph_for_traversals):
-    """."""
+    """Depth first traversal will return a list."""
     graph = populated_graph_for_traversals
     assert isinstance(graph.depth_first('A'), list)
 
-def test_depth_first_traversal_returns_proper_list(populated_graph_for_traversals):
-    """."""
+
+def test_depth_first_traversal_returns_list02(populated_graph_for_traversals):
+    """It will correctly navigate depth first."""
     graph = populated_graph_for_traversals
     test = graph.depth_first('A')
     assert test == ['A', 'C', 'F', 'I', 'H', 'B', 'E', 'G', 'D']
 
-def test_depth_first_traversal_with_loop_returns_proper_list(populated_graph_for_traversals):    
-    """."""
+
+def test_depth_first_with_loop_returns_list(populated_graph_for_traversals):
+    """It will correctly navigate depth first even if there's a loop."""
     graph = populated_graph_for_traversals
     graph.add_edge('B', 'A')
     test = graph.depth_first('A')
     assert test == ['A', 'C', 'F', 'I', 'H', 'B', 'E', 'G', 'D']
 
-def test_depth_first_traversal_works(populated_edges_graph):    
-    """."""
+
+def test_depth_first_traversal_works(populated_edges_graph):
+    """Depth first will navigate properly."""
     graph = populated_edges_graph
     test = graph.depth_first(1)
     assert test == [1, 4, 2]
 
-def test_depth_first_traversal_with_isolated_nodes(populated_edges_graph):    
-    """."""
+
+def test_depth_first_traversal_with_isolated_nodes(populated_edges_graph):
+    """An isolated node will not be returned in the list."""
     graph = populated_edges_graph
     test = graph.depth_first(3)
     assert test == [3, 2]
 
+
 def test_breadth_first_traversal_returns_list(populated_graph_for_traversals):
-    """."""
+    """Breadth first works."""
     graph = populated_graph_for_traversals
     assert isinstance(graph.breadth_first('A'), list)
 
-def test_breadth_first_traversal_returns_proper_list(populated_graph_for_traversals):
-    """."""
+
+def test_breadth_first_traversal_returns_list3(populated_graph_for_traversals):
+    """Breadth first continues to properly work."""
     graph = populated_graph_for_traversals
     test = graph.breadth_first('A')
     assert test == ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
-def test_breadth_first_traversal_with_loop_returns_proper_list(populated_graph_for_traversals):    
-    """."""
+
+def test_breadth_firstwith_loop_returns_list(populated_graph_for_traversals):
+    """Breadth first won't be thrown off by a loop."""
     graph = populated_graph_for_traversals
     graph.add_edge('B', 'A')
     test = graph.breadth_first('A')
     assert test == ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
-def test_breadth_first_traversal_works(populated_edges_graph):    
-    """."""
+
+def test_breadth_first_traversal_works(populated_edges_graph):
+    """Breadth first is a champ."""
     graph = populated_edges_graph
     test = graph.breadth_first(1)
     assert test == [1, 2, 4]
 
-def test_breadth_first_traversal_with_isolated_nodes(populated_edges_graph):    
-    """."""
+
+def test_breadth_first_traversal_with_isolated_nodes(populated_edges_graph):
+    """Isolated nodes won't fuck up breadth first's day."""
     graph = populated_edges_graph
     test = graph.breadth_first(3)
     assert test == [3, 2]
 
-def test_breadth_first_traversal_with_nodes_have_multiple_edges(populated_graph_for_traversals):
-    """."""
+
+def test_nodes_with_tons_of_edges_still_works(populated_graph_for_traversals):
+    """Baby all those edges is fine."""
     graph = populated_graph_for_traversals
     graph.add_edge('D', 'G')
     graph.add_edge('E', 'F')
