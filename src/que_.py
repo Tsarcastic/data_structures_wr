@@ -31,6 +31,7 @@ class Queue(object):
             self.tail = new_tail
         self._counter += 1
 
+
     def dequeue(self):
         """Remove a node from the head of the queue."""
         if not self.head:
