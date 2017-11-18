@@ -1,23 +1,13 @@
 
 
 
-# pred_list
-# {
-# s = [0]
-# a = [s, 2]
-# b = [s, 1]
-# d = [b, 3]
-# c = [a, 10]
-# t=  [d, 8]
-# }
-
-nodelist [s, a, b, c, d, t]
+nodelist[s, a, b, c, d, t]
 
 pred_list = {'s':['', 0]}
 for node in nodelist:
     pred_list[node] = ['', float('inf')]
 
-edges = { 
+edges = {
          (s, a) = 2,
          (s, b) = 1,
          (a, c) = 8,
@@ -43,4 +33,3 @@ for node in nodelist:
             if pred_list contains edge(1):
                 if tentative < pred_list[edge(1)](1):
                     pred_list[edge(1)] = [edge(0), tentative]
-            
