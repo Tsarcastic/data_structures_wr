@@ -31,7 +31,6 @@ class Queue(object):
             self.tail = new_tail
         self._counter += 1
 
-
     def dequeue(self):
         """Remove a node from the head of the queue."""
         if not self.head:
@@ -44,7 +43,10 @@ class Queue(object):
 
     def peek(self):
         """Access the value of the head of the queue."""
-        return self.head.data
+        if self.head:
+            return self.head.data
+        else:
+            raise IndexError("The queue is empty.")
 
     def size(self):
         """Return the size of the queue."""
