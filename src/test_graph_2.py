@@ -1,4 +1,4 @@
-"""."""
+"""Test graphs that include depth-first and breadth-first traversals."""
 import pytest
 
 
