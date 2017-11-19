@@ -30,14 +30,15 @@ def djs_algorithm(start_pt, end_pt, node_list, edge_list):
 
         for key in edges:
             if key[0] == node:
-                tentative = edges[key] + pred_list[key[0]](1)
-                if tentative < pred_list[key[1]](1):
+                tentative = edges[key] + pred_list[key[0]][1]
+                if tentative < pred_list[key[1]][1]:
                     pred_list[key[1]] = [key[0], tentative]
-    dist = pred_list[end_pt](1)
+    dist = pred_list[end_pt][1]
     route = []
     cur = end_pt
-    while cur:
-        route.append(pred_list[cur](0))
-        cur = pred_list[cur](0)
-
+    route.append(end_pt)
+    while cur != start_pt:
+        route.append(pred_list[cur][0])
+        cur = pred_list[cur][0]
+    route.reverse() 
     return dist, route
