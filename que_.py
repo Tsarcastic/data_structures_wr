@@ -8,7 +8,7 @@ class Node(object):
         """Create a new Node."""
         self.data = data
         self.previous = previous
-        self.next = None
+        self.next_node = None
 
 
 class Queue(object):
@@ -27,7 +27,7 @@ class Queue(object):
             self.head = new_tail
             self.tail = new_tail
         else:
-            self.tail.next = new_tail
+            self.tail.next_node = new_tail
             self.tail = new_tail
         self._counter += 1
 
@@ -36,9 +36,12 @@ class Queue(object):
         if not self.head:
             raise IndexError("There is nothing to dequeue.")
         output = self.head.data
-        self.head.next.previous = None
-        self.head = self.head.next
-        self._counter -= 1
+        if self.head.next_node:
+            self.head.next_node.previous = None
+            self.head = self.head.next_node
+            self._counter -= 1
+        else:
+            self.head.next_node.previous = None
         return output
 
     def peek(self):

@@ -6,7 +6,7 @@ import pytest
 
 def test_node_has_attributes():
     """Test for Node."""
-    from linked_list_code_base import Node
+    from que_ import Node
     n = Node(1, None)
     assert hasattr(n, 'data')
     assert hasattr(n, 'data')
@@ -97,6 +97,15 @@ def test_peek_on_empty():
 
 
 def test_size_works_properly():
+    """If two items queue up and one dequeues the second is the new head."""
+    from que_ import Queue
+    q = Queue()
+    q.enqueue('x')
+    q.enqueue('y')
+    assert q.size() == 2
+
+
+def test_next_is_correct():
     """If two items queue up and one dequeues the second is the new head."""
     from que_ import Queue
     q = Queue()
