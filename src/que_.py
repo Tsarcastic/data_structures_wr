@@ -36,8 +36,11 @@ class Queue(object):
         if not self.head:
             raise IndexError("There is nothing to dequeue.")
         output = self.head.data
-        self.head.next.previous = None
-        self.head = self.head.next
+        if self.head.next:
+                self.head.next.previous = None
+                self.head = self.head.next
+        else:
+            self.head = None
         self._counter -= 1
         return output
 
