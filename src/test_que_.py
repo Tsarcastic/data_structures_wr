@@ -113,6 +113,7 @@ def test_next_is_correct():
     q.enqueue('y')
     assert q.size() == 2
 
+
 def test_can_dequeue_everything():
     from que_   import Queue    
     q = Queue()
@@ -121,3 +122,13 @@ def test_can_dequeue_everything():
     q.dequeue()
     q.dequeue()
     assert q.head == None
+
+def test_can_requeue():
+    from que_ import Queue  
+    q = Queue()
+    q.enqueue('x')
+    q.enqueue('y')
+    q.dequeue()
+    q.dequeue()
+    q.enqueue('z')
+    assert q.head.data == 'z'
