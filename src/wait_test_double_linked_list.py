@@ -12,7 +12,6 @@ def test_node_exists_in_continuum01():
     assert dll.head.next_node.previous.data == 'orange'
 
 
-
 def test_node_exists_in_continuum02():
     """Test for previous."""
     from double_linked_list import Node, DoubleLinkedList
@@ -20,7 +19,6 @@ def test_node_exists_in_continuum02():
     dll.push('banana')
     dll.push('orange')
     assert dll.head.next_node.data == 'banana'
-
 
 
 def test_node_exists_in_continuum03():
@@ -117,12 +115,12 @@ def test_append_changes_tail_when_list_has_multiple_nodes():
 
 def test_append_retains_correct_next_node_for_nodes():
     """A node's 'next_node' is retained properly through appending."""
-
     from double_linked_list import Node, DoubleLinkedList
     dll = DoubleLinkedList()
     dll.append("blue")
     dll.append("red")
     assert dll.head.next_node.data == "red"
+
 
 def test_remove01():
     """Removing an item maintains list."""
