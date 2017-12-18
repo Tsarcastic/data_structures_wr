@@ -53,7 +53,7 @@ class LinkedList(object):
             if curr.data == val:
                 return curr
             curr = curr.next
-        return
+        raise ValueError("Value not found.")
 
     def remove(self, val):
         """Search for a given value and remove it from the linked list."""
@@ -66,13 +66,10 @@ class LinkedList(object):
             curr = curr.next
 
     def display(self):
-        """Will return a string representing the list.
-
-        as if it were a Python tuple literal: "(12, ‘sam’, 37, ‘tango’)"
-        """
-        if self.head is None:
-            return
+        """Return a string representing the list."""
         curr = self.head
+        if self._counter == 0:
+            return "()"
         output = "("
         while curr:
             if isinstance(curr.data, (int, float)):
