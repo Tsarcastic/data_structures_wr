@@ -15,7 +15,7 @@ setup(
     package_dir={'': 'src'},
     install_requires=[],
     extras_require={
-        'testing': ['pytest', 'pytest-cov', 'pytest-watch', 'tox'],
+        'testing': ['pytest', 'pytest-cov', 'pytest-watch', 'tox', 'ipython'],
         'development': ['ipython']
     },
     entry_points={

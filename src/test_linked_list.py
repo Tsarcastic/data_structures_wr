@@ -13,14 +13,14 @@ def test_node_has_attributes():
 
 
 def test_linked_list_has_head():
-    """."""
+    """Test linked list has nead attr."""
     from linked_list import LinkedList
     l = LinkedList()
     assert l.head is None
 
 
 def test_linked_list_push_adds_new_item():
-    """."""
+    """Test that push adds item to list."""
     from linked_list import LinkedList
     l = LinkedList()
     l.push('val')
@@ -28,7 +28,7 @@ def test_linked_list_push_adds_new_item():
 
 
 def test_linked_list_push_two_new_item():
-    """."""
+    """Test pushing 2 values to list works."""
     from linked_list import LinkedList
     l = LinkedList()
     l.push('val')
@@ -37,7 +37,7 @@ def test_linked_list_push_two_new_item():
 
 
 def test_linked_list_push_moves_old_head_to_new_heads_next():
-    """."""
+    """Test when pushing mult values, head moves."""
     from linked_list import LinkedList
     l = LinkedList()
     l.push('val')
@@ -45,8 +45,8 @@ def test_linked_list_push_moves_old_head_to_new_heads_next():
     assert l.head.next.data == 'val'
 
 
-def test_linked_list_pop_removes_head_and_returns_value():
-    """."""
+def test_linked_list_pop_removes_head():
+    """Test that pop removes head."""
     from linked_list import LinkedList
     l = LinkedList()
     l.push('potato')
@@ -54,8 +54,8 @@ def test_linked_list_pop_removes_head_and_returns_value():
     assert l.head is None
 
 
-def test_linked_list_returns_head_value():
-    """."""
+def test_linked_list_pop_returns_head_value():
+    """Test that pop returns the value of the node."""
     from linked_list import LinkedList
     l = LinkedList()
     l.push('potato')
@@ -63,7 +63,7 @@ def test_linked_list_returns_head_value():
 
 
 def test_linked_list_pop_shifts_head_properly():
-    """."""
+    """Test that pop shifts head."""
     from linked_list import LinkedList
     l = LinkedList()
     l.push('potato')
@@ -73,7 +73,7 @@ def test_linked_list_pop_shifts_head_properly():
 
 
 def test_linked_list_pop_empty_raises_exception():
-    """."""
+    """Test that using pop on empty list raises exception."""
     from linked_list import LinkedList
     l = LinkedList()
     with pytest.raises(IndexError):
@@ -81,7 +81,7 @@ def test_linked_list_pop_empty_raises_exception():
 
 
 def test_linked_list_size_returns_list_length():
-    """."""
+    """Test that size returns list count."""
     from linked_list import LinkedList
     l = LinkedList()
     assert l.size() == 0
@@ -89,7 +89,7 @@ def test_linked_list_size_returns_list_length():
 
 @pytest.mark.parametrize('n', range(100))
 def test_linked_list_size_returns_list_length2(n):
-    """."""
+    """Test that large list tracks size properly."""
     from linked_list import LinkedList
     l = LinkedList()
     for i in range(n):
@@ -98,15 +98,14 @@ def test_linked_list_size_returns_list_length2(n):
 
 
 def test_linked_list_search__empty_returns_none():
-    """."""
+    """Test search on empty list returns None."""
     from linked_list import LinkedList
     l = LinkedList()
-    l.push(1)
-    assert l.search(1).data is 1
+    assert l.search(1) is None
 
 
 def test_linked_list_search__with_one_returns_node():
-    """."""
+    """Test search on single node list returns node."""
     from linked_list import LinkedList
     l = LinkedList()
     l.push(1)
@@ -114,27 +113,16 @@ def test_linked_list_search__with_one_returns_node():
 
 
 def test_linked_list_search__with_one_bad_search():
-    """."""
+    """Test search on empty list raises error."""
     from linked_list import LinkedList
     l = LinkedList()
     l.push(1)
-    assert l.search(0) is None
-
-
-# @pytest.mark.parametrize('n', range(1, 10))
-# def test_linked_list_search__with_one_bad_search2(n):
-#     """."""
-#     from linked_list import LinkedList
-#     from random import randint
-#     l = LinkedList()
-#     for i in range(1, n + 1):
-#         l.push(i)
-#     search_me = randint(1, n)
-#     assert l.search(search_me).data == search_me
+    with pytest.raises(ValueError):
+        l.search(0)
 
 
 def test_linked_list_can_take_iterable_str():
-    """."""
+    """Test LL can instantiate with iterable string."""
     from linked_list import LinkedList
     a_name = "bilbo baggins"
     l = LinkedList(a_name)
@@ -143,7 +131,7 @@ def test_linked_list_can_take_iterable_str():
 
 
 def test_linked_list_can_take_iterable_range():
-    """."""
+    """Test LL can instantiate with range."""
     from linked_list import LinkedList
     a_list = range(1, 20)
     l = LinkedList(a_list)
@@ -152,7 +140,7 @@ def test_linked_list_can_take_iterable_range():
 
 
 def test_linked_list_can_take_iterable_list():
-    """."""
+    """Test LL can instantiate with list type."""
     from linked_list import LinkedList
     a_list = [4, 3, 2, 6, 4, 9, 8]
     l = LinkedList(a_list)
@@ -161,24 +149,25 @@ def test_linked_list_can_take_iterable_list():
 
 
 def test_remove_removes_number_from_list():
-    """."""
+    """Test remove removes value from the list."""
     from linked_list import LinkedList
     a_list = [4, 3, 2, 6, 4, 9, 8]
     l = LinkedList(a_list)
     l.remove(l.search(6))
     assert len(l) == 6
-    assert l.search(6) is None
+    with pytest.raises(ValueError):
+        l.search(6)
 
 
 def test_display_on_empty_list():
-    """."""
+    """Test display on empty list shows empty tuple-like-string."""
     from linked_list import LinkedList
-    l = LinkedList()
-    assert l.display() is None
+    lst = LinkedList()
+    assert lst.display() == "()"
 
 
 def test_display_a_list():
-    """."""
+    """Test display lists out node values."""
     from linked_list import LinkedList
     a_list = [4, 3, 2, 6, 4, 9, 8]
     l = LinkedList(a_list)
