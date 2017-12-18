@@ -55,11 +55,13 @@ class LinkedList(object):
             curr = curr.next
         raise ValueError("Value not found.")
 
-    def remove(self, val):
-        """Search for a given value and remove it from the linked list."""
+    def remove(self, node):
+        """Search for a given node and remove it from the linked list."""
         curr = self.head
+        if curr is node:
+            self.head = curr.next
         while curr:
-            if curr.next == val:
+            if curr.next == node:
                 curr.next = curr.next.next
                 self._counter -= 1
                 return
