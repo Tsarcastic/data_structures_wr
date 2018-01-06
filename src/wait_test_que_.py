@@ -1,8 +1,13 @@
 """Test for the queue."""
 
-
 import pytest
 
+@pytest.fixture
+def basic_setup():
+    """A basic setup with an empty graph."""
+    from double_linked_list import DoubleLinkedList 
+    graph = DirectionalGraph()
+    return graph
 
 def test_node_has_attributes():
     """Test for Node."""
@@ -50,6 +55,7 @@ def test_two_items_in_line_correct_head():
     q.enqueue('y')
     assert q.head.data is 'x'
 
+
 def test_two_items_in_line_correct_head():
     """If two items queue up the tail is the second one."""
     from que_ import Queue
@@ -58,8 +64,9 @@ def test_two_items_in_line_correct_head():
     q.enqueue('y')
     assert q.tail.data is 'y'
 
+
 def test_dequeue_error_message():
-    """If two items queue up and one dequeues the second is the new head""" 
+    """If two items queue up and one dequeues the second is the new head."""
     from que_ import Queue
     q = Queue()
     q.enqueue('x')
@@ -69,7 +76,7 @@ def test_dequeue_error_message():
     assert q.head.data == 'y'
 
 def test_len_works_properly():
-    """If two items queue up and one dequeues the second is the new head""" 
+    """If two items queue up and one dequeues the second is the new head"""
     from que_ import Queue
     q = Queue()
     q.enqueue('x')
