@@ -60,7 +60,7 @@ def test_shift_from_tail_one_item_head_is_tail(basic):
 
 def test_shift_on_empty_list_raises_exception():
     """Shift on empty list raises exception."""
-    from double_linked_list import Node, DoubleLinkedList
+    from double_linked_list import DoubleLinkedList
     dll = DoubleLinkedList()
     with pytest.raises(IndexError):
         dll.shift()
@@ -68,7 +68,7 @@ def test_shift_on_empty_list_raises_exception():
 
 def test_append_on_empty_list_makes_head_and_tail_same():
     """Appending an item to an empty list makes that item head and tail."""
-    from double_linked_list import Node, DoubleLinkedList
+    from double_linked_list import DoubleLinkedList
     dll = DoubleLinkedList()
     dll.append("blue")
     assert dll.head == dll.tail
@@ -76,7 +76,7 @@ def test_append_on_empty_list_makes_head_and_tail_same():
 
 def test_append_increments_counter():
     """Size goes up correctly."""
-    from double_linked_list import Node, DoubleLinkedList
+    from double_linked_list import DoubleLinkedList
     dll = DoubleLinkedList()
     dll.append("blue")
     assert dll.size() == 1
@@ -84,7 +84,7 @@ def test_append_increments_counter():
 
 def test_append_changes_tail_when_list_has_multiple_nodes():
     """Tail shifts correctly when appended."""
-    from double_linked_list import Node, DoubleLinkedList
+    from double_linked_list import DoubleLinkedList
     dll = DoubleLinkedList()
     dll.append("blue")
     dll.append("red")
@@ -93,7 +93,7 @@ def test_append_changes_tail_when_list_has_multiple_nodes():
 
 def test_append_retains_correct_next_node_for_nodes():
     """A node's 'next_node' is retained properly through appending."""
-    from double_linked_list import Node, DoubleLinkedList
+    from double_linked_list import DoubleLinkedList
     dll = DoubleLinkedList()
     dll.append("blue")
     dll.append("red")
@@ -102,7 +102,7 @@ def test_append_retains_correct_next_node_for_nodes():
 
 def test_remove01():
     """Removing an item maintains list."""
-    from double_linked_list import Node, DoubleLinkedList
+    from double_linked_list import DoubleLinkedList
     dll = DoubleLinkedList()
     dll.push('z')
     dll.push('x')
@@ -113,7 +113,7 @@ def test_remove01():
 
 def test_remove02():
     """The tail is correctly updated when the previous tail is removed."""
-    from double_linked_list import Node, DoubleLinkedList
+    from double_linked_list import DoubleLinkedList
     dll = DoubleLinkedList()
     dll.push('x')
     dll.push('z')
@@ -125,11 +125,10 @@ def test_remove02():
 
 def test_display():
     """Will return the correct string representing double linked list."""
-    from double_linked_list import Node, DoubleLinkedList
+    from double_linked_list import DoubleLinkedList
     dll = DoubleLinkedList()
     dll.push('x')
     dll.push('z')
     dll.push('x')
     dll.push('y')
     assert dll.display() == "(y, x, z, x)"
-

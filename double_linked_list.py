@@ -1,9 +1,8 @@
-"""Double linked list creation."""
-
-
+"""Double linked list."""
 
 class Node(object):
     """Creates a node object."""
+asdqawd
 
 
     def __init__(self, data, next_node, previous="None"):
