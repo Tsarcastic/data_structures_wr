@@ -87,6 +87,23 @@ class DoubleLinkedList(object):
     def remove(self, val):
         """Search for a given node value and remove it from the linked list."""
         curr = self.head
+        if not curr:
+            raise Exception('The list is empty.')
+        elif self.head == self.tail and self.head.data == val:
+            self.head = None
+            self.tail = None
+            self._counter -= 1
+            print('That item has been removed. The list is now empty.')
+        elif self.head.data == val:
+            self.head = self.head.next_node
+            self.head.previous = None
+            self._counter -= 1
+            print('The item has been removed')
+        elif self.tail.data == val:
+            self.tail = self.tail.previous
+            self.tail.next = None
+            self._counter -= 1
+            print('The item has been removed.')
         while curr:
             if curr.next_node.data == val:
                 curr.next_node = curr.next_node.next_node
