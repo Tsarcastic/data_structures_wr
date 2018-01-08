@@ -133,5 +133,5 @@ def test_has_node_registers_false(populated_graph):
 
 def test_del_node_raises_index_error(populated_graph):
     """Won't delete something that isn't there."""
-    with pytest.raises(IndexError):
+    with pytest.raises(Exception):
         populated_graph.del_node('tortoise')
