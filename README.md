@@ -41,6 +41,10 @@ The *push()* method pushes a new Node into a stack. This stack uses FILO, which 
 The Time Complexity for this method is 0(1). Time is constant because you do not have to iterate through the stack.
 
 ### Pop
+<<<<<<< HEAD
+The *pop()* method removes a new Node off the top of the stack. This stack uses FILO, which is First In Last Out.
+The Time Complexity for this method is 0(1). Time is constant because you do not have to iterate through the list.
+=======
 The *pop()* method removes a node off the top of the stack. This stack uses FILO, which is First In Last Out.
 The Time Complexity for this method is 0(1). Time is constant because you do not have to iterate through the stack.
 
@@ -89,6 +93,7 @@ Time Complexity of this function is O(n).  This is because in the worst-case-sce
 ### Display
 The *display()* method traverses the list and builds a tuple-like string containing all the values in the list, and returns that string.
 Time Complexity of this function is O(n).  This is because in the worst-case-scenario the function will run a number of times equal to the length of the list, so the length of the list is the deciding factor on how long this runs.  Worst-case-scenarios would be a. if the list didn't contain the value, and b. if the value belonged to the last node in the list.
+>>>>>>> a17e9caa668ccc4415bf2baf74df37d2d5d89792
 
 
 -------------------
@@ -114,6 +119,8 @@ Time Complexity for size is O(1), since the value is tracked as an attribute, al
 
 ### __len__
 The *__len__* method allows us to use the standard len() method and we re-map it to return the value returned by the size() method.
+<<<<<<< HEAD
+=======
 
 -------------------
 ### Bin Heap
@@ -199,3 +206,4 @@ The Time Complexity for this method is O(1). Time is constant because you do not
 The size() method returns the count of items in the queue (returns 0 if the queue is empty)
 The Time Complexity for this method is O(1). Time is constant because you do not have to iterate through the deque.
 
+>>>>>>> a17e9caa668ccc4415bf2baf74df37d2d5d89792
